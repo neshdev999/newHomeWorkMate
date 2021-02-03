@@ -1,0 +1,24 @@
+/* Default CSS */
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+
+/* Main Image Slider */
+
+#sliderContainer {
+    text-align: center;
+}
+
+.inputControlFormContainer {
+    text-align: center;
+    margin: 2%;
+    padding: 2%;
+}
