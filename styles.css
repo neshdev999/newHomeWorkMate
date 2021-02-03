@@ -22,3 +22,36 @@ html {
     margin: 2%;
     padding: 2%;
 }
+
+
+/* Service Menu Page */
+
+#serviceMenuPageHeader {
+    text-align: center;
+}
+
+.imagteTileParentWrapper {
+    text-align: center;
+}
+
+.imageTilesWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 6%;
+    margin-right: 6%;
+}
+
+.singleImageTileNameContainer {
+    flex: 0 0 120px;
+    margin: 10px;
+}
+
+.serviceMenuTileImage {
+    width: 400px;
+    height: 265px;
+}
+
+.serviceMenuPageNavigationFormContainer {
+    text-align: center;
+}
