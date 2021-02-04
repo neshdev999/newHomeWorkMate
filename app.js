@@ -2,6 +2,10 @@
 
 var imageChangeCounter = 0;
 var receivedImageTileID = '';
+var postCode = 28278;
+var myHeaders = new Headers();
+myHeaders.append("Cookie", "JSESSIONID=567F9685339DB8F1A0D7CEB876F61452");
+var intervalCycleHolder;
 /********** TEMPLATE GENERATION FUNCTIONS **********/
 
 /*----Home Page Template----*/
@@ -339,6 +343,8 @@ function businessesListNavigationInputControlBox() {
 
 /********** RENDER FUNCTION(S) **********/
 
+/* Home Page */
+
 function preloadSliderImages(slider) {
     var slideImagesLength = slider.sliderImages.length;
 
@@ -364,11 +370,69 @@ function changeSliderImages(slide) {
 
 function sliderRender() {
     preloadSliderImages(sliderStore);
-    setInterval(function() {
+    intervalCycleHolder = setInterval(function() {
         changeSliderImages(sliderStore);
     }, 3000);
 }
 
+/* MAPQUEST API CALL */
+
+
+
+// function getLatLng(postCode) {
+
+//     if (postCode === undefined) {
+//         postCode = 28278;
+//     }
+
+//     var settings = {
+//         "url": "http://www.mapquestapi.com/geocoding/v1/address?key=GZDv4LmGEWEgYHHXQ91rn8y3QDnDqS2A&country=US&postalCode=" + postCode,
+//         "method": "GET",
+//         "timeout": 0,
+//         "headers": {
+//             "Cookie": "JSESSIONID=567F9685339DB8F1A0D7CEB876F61452"
+//         },
+//     };
+
+//     $.ajax(settings).done(function(response) {
+//         console.log(response);
+//         let latLangObject = response.results['0'].locations['0'].latLng;
+//         //console.log(latLangObject);
+//         return latLangObject;
+//     });
+
+
+// }
+
+// let trialObject = getLatLng(postCode);
+// console.log(trialObject);
+
+function getLatLng(postCode) {
+    let url = "http://www.mapquestapi.com/geocoding/v1/address?key=GZDv4LmGEWEgYHHXQ91rn8y3QDnDqS2A&country=US&postalCode=" + postCode;
+    fetch(url, {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow'
+        })
+        .then(response => response.json())
+        .then(
+            responseJson => {
+                //console.log(responseJson);
+                let latLngObject = responseJson.results['0'].locations['0'].latLng;
+                //console.log(latLngObject);
+                receiveLatLngObject(latLngObject);
+            })
+        .catch(err => {
+            console.log(`${err.message}`);
+        })
+}
+
+function receiveLatLngObject(latLng) {
+    let receivedLat = latLng["lat"];
+    let receivedLng = latLng["lng"];
+    console.log(receivedLat);
+    console.log(receivedLng);
+}
 
 
 /********** EVENT HANDLER FUNCTIONS **********/
@@ -378,6 +442,10 @@ function handleHomePageFormSubmission() {
     $('#homePageForm').submit(function(event) {
         alert("form handler is called");
         event.preventDefault();
+        postCode = $('#zip').val();
+        console.log(postCode);
+        getLatLng(postCode);
+        //getLatLng(postCode);
         provideRoute(routingParamsHolder.currentPage[1]);
     });
 }
@@ -392,24 +460,11 @@ function handleServiceMenuPageNavigationFormSubmission() {
 }
 
 function handleImageTileClick() {
-    // switch(imageID){
-    //     case 'securitySystemsTile':
-    //         $('#securitySystemsTile').on("click", function(){
-    //             alert("security System is clicked");
-    //         });
-    // }
-
     $('img').on('click', function() {
         var receivedImageID = $(this).attr('id');
         alert(receivedImageID);
         receivedImageTileID = receivedImageID;
         provideRoute(routingParamsHolder.currentPage[2]);
-        // switch(imageID){
-        //     case 'securitySystemsTile':
-        //         provideRoute(routingParamsHolder.currentPage[2]);
-        //         break;
-
-        // }
     });
 }
 
@@ -437,10 +492,14 @@ function provideRoute(checkFlag) {
         sliderRender();
         handleHomePageFormSubmission();
     } else if (checkFlag === 'servicesMenuPage') {
+        /* Clear Home Page banner interval  */
+        clearInterval(intervalCycleHolder);
         serviceMenuPage();
         handleServiceMenuPageNavigationFormSubmission();
         handleImageTileClick();
     } else if (checkFlag === 'businessesListPage') {
+        /* Clear Home Page banner interval  */
+        clearInterval(intervalCycleHolder);
         businessesListPage(receivedImageTileID, businessesListStore);
         handleBusinessesListPageNavigationFormSubmission();
     }
