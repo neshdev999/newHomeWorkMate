@@ -50,8 +50,44 @@ html {
 .serviceMenuTileImage {
     width: 400px;
     height: 265px;
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    color: #6f6cde;
+}
+
+.serviceMenuTileImage:hover {
+    opacity: 0.3;
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.serviceMenuTileImage:active {
+    opacity: 1;
+    box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+    color: #79e3b6;
 }
 
 .serviceMenuPageNavigationFormContainer {
+    text-align: center;
+}
+
+.imageTileNameContainer {
+    line-height: 100px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    font-weight: semibold;
+}
+
+
+/* Businesses List Navigation */
+
+#businessesListNavigationFormContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.businessesListHeader {
+    text-align: center;
+}
+
+.businessesListHeaderImageHolder {
     text-align: center;
 }
