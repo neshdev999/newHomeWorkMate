@@ -3,9 +3,15 @@
 var imageChangeCounter = 0;
 var receivedImageTileID = '';
 var postCode = 28278;
+/* Setup API Headers */
 var myHeaders = new Headers();
 myHeaders.append("Cookie", "JSESSIONID=567F9685339DB8F1A0D7CEB876F61452");
+var yelpHeaders = new Headers();
+yelpHeaders.append("Authorization", "Bearer MBVJWBW1zN3qUwImfoXZa0Nor81lf6ld5qrgZZx1Ab_RU70XFheA0dip2HPGpRQYLm94GFkYML8UuH-FkJ7-SZbKC8Ee9QScqDQgFBWijFRr4cPzTP4bMjkOJa8VYHYx");
+// yelpHeaders.append("Access-Control-Allow-Origin", "*");
 var intervalCycleHolder;
+var lat = 0;
+var lng = 0;
 /********** TEMPLATE GENERATION FUNCTIONS **********/
 
 /*----Home Page Template----*/
@@ -431,7 +437,135 @@ function receiveLatLngObject(latLng) {
     let receivedLat = latLng["lat"];
     let receivedLng = latLng["lng"];
     console.log(receivedLat);
+    lat = receivedLat;
+    lng = receivedLng;
     console.log(receivedLng);
+}
+
+/* Yelp API CALL */
+
+function findYelpCategory(imageID) {
+    let yelpCategory = '';
+
+    switch (imageID) {
+        case 'securitySystemsTile':
+            yelpCategory = 'securitysystems';
+            break;
+        case 'pestControlTile':
+            yelpCategory = 'pest_control';
+            break;
+        case 'landscapingTile':
+            yelpCategory = 'landscaping';
+            break;
+        case 'cleaningServicesTile':
+            yelpCategory = 'homecleaning';
+            break;
+        case 'hvacTile':
+            yelpCategory = 'hvac';
+            break;
+        case 'roofingServicesTile':
+            yelpCategory = 'roofing';
+            break;
+        case 'plumbingTile':
+            yelpCategory = 'plumbing';
+            break;
+        case 'electricalServicesTile':
+            yelpCategory = 'electricians';
+            break;
+        case 'windowInstallationTile':
+            yelpCategory = 'windowsinstallation';
+            break;
+        case 'fencingServicesTile':
+            yelpCategory = 'fencing';
+            break;
+        case 'garageServicesTile':
+            yelpCategory = 'garage_door_services';
+            break;
+        case 'sidingServicesTile':
+            yelpCategory = 'vinylsiding';
+            break;
+        case 'solarPanelTile':
+            yelpCategory = 'solarinstallation';
+            break;
+        case 'carpetCleaningTile':
+            yelpCategory = 'carpet_cleaning';
+            break;
+        case 'shadesAndBlindsTile':
+            yelpCategory = 'blinds';
+            break;
+        case 'carpetInstallationTile':
+            yelpCategory = 'carpetinstallation';
+            break;
+        case 'paintingServicesTile':
+            yelpCategory = 'painters';
+            break;
+        case 'fireplaceServicesTile':
+            yelpCategory = 'fireplace';
+            break;
+        case 'airDuctServicesTile':
+            yelpCategory = 'airductcleaning';
+            break;
+        case 'poolServicesTile':
+            yelpCategory = 'poolservice';
+            break;
+        case 'handymanServicesTile':
+            yelpCategory = 'handyman';
+            break;
+        default:
+            yelpCategory = 'landscaping';
+            console.log('');
+    }
+
+    return yelpCategory;
+
+}
+
+// function getBusinessesListFromApi(lat, lng, cat) {
+//     var requestOptions = {
+//         method: 'GET',
+//         headers: yelpHeaders,
+//         redirect: 'follow'
+//     };
+
+//     let yelpUrl = "https://api.yelp.com/v3/businesses/search?radius=15000&latitude=" + lat + "&longitude=" + lng + "" + "&limit=5&categories=" + cat;
+
+//https://api.yelp.com/v3/businesses/search?radius=15000&latitude=35.157145&longitude=-80.986962&limit=5&categories=painters
+
+// fetch(yelpUrl, requestOptions)
+//     .then(response => response.text())
+//     .then(result => console.log(result))
+//     .catch(error => console.log('error', error));
+
+//     fetch(yelpUrl, {
+//             method: 'GET',
+//             headers: yelpHeaders,
+//             redirect: 'follow',
+
+//         })
+//         .then(response => response.json())
+//         .then(
+//             responseJson => {
+//                 console.log(responseJson);
+//             })
+//         .catch(err => {
+//             console.log(`${err.message}`);
+//         })
+// }
+
+function getBusinessesListFromApi(lat, lng, cat) {
+    var settings = {
+        "url": "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?radius=15000&latitude=35.157145&longitude=-80.986962&limit=5&categories=painters",
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+            "Authorization": "Bearer MBVJWBW1zN3qUwImfoXZa0Nor81lf6ld5qrgZZx1Ab_RU70XFheA0dip2HPGpRQYLm94GFkYML8UuH-FkJ7-SZbKC8Ee9QScqDQgFBWijFRr4cPzTP4bMjkOJa8VYHYx",
+            "Access-Control-Allow-Origin": "*"
+        },
+    };
+
+    $.ajax(settings).done(function(response) {
+        console.log(response);
+    });
 }
 
 
@@ -445,7 +579,6 @@ function handleHomePageFormSubmission() {
         postCode = $('#zip').val();
         console.log(postCode);
         getLatLng(postCode);
-        //getLatLng(postCode);
         provideRoute(routingParamsHolder.currentPage[1]);
     });
 }
@@ -464,6 +597,9 @@ function handleImageTileClick() {
         var receivedImageID = $(this).attr('id');
         alert(receivedImageID);
         receivedImageTileID = receivedImageID;
+        let receivedYelpCatgo = findYelpCategory(receivedImageTileID);
+        getBusinessesListFromApi(lat, lng, receivedYelpCatgo);
+
         provideRoute(routingParamsHolder.currentPage[2]);
     });
 }
