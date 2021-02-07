@@ -6,10 +6,6 @@ var postCode = 28278;
 /* Setup API Headers */
 var myHeaders = new Headers();
 myHeaders.append("Cookie", "JSESSIONID=567F9685339DB8F1A0D7CEB876F61452");
-//myHeaders.append("Access-Control-Allow-Origin", "*");
-// var yelpHeaders = new Headers();
-// yelpHeaders.append("Authorization", "Bearer MBVJWBW1zN3qUwImfoXZa0Nor81lf6ld5qrgZZx1Ab_RU70XFheA0dip2HPGpRQYLm94GFkYML8UuH-FkJ7-SZbKC8Ee9QScqDQgFBWijFRr4cPzTP4bMjkOJa8VYHYx");
-// yelpHeaders.append("Access-Control-Allow-Origin", "*");
 var intervalCycleHolder;
 var lat = 35.121676;
 var lng = -81.007845;
@@ -354,8 +350,6 @@ function businessesListNavigationInputControlBox() {
     </div>`
 }
 
-
-
 /********** RENDER FUNCTION(S) **********/
 
 /* Home Page */
@@ -421,81 +415,81 @@ function receiveLatLngObject(latLng) {
     console.log(receivedLng);
 }
 
-/* Yelp API CALL */
+/* Gather relevant category for API CALL */
 
-function findYelpCategory(imageID) {
-    let yelpCategory = '';
+function findMapQuestBusinessCategory(imageID) {
+    let mapQuestBusinessCategory = '';
 
     switch (imageID) {
         case 'securitySystemsTile':
-            yelpCategory = '874813';
+            mapQuestBusinessCategory = '874813';
             break;
         case 'pestControlTile':
-            yelpCategory = '734201';
+            mapQuestBusinessCategory = '734201';
             break;
         case 'landscapingTile':
-            yelpCategory = '078204';
+            mapQuestBusinessCategory = '078204';
             break;
         case 'cleaningServicesTile':
-            yelpCategory = '734922';
+            mapQuestBusinessCategory = '734922';
             break;
         case 'hvacTile':
-            yelpCategory = '171147';
+            mapQuestBusinessCategory = '171147';
             break;
         case 'roofingServicesTile':
-            yelpCategory = '176109';
+            mapQuestBusinessCategory = '176109';
             break;
         case 'plumbingTile':
-            yelpCategory = '171105';
+            mapQuestBusinessCategory = '171105';
             break;
         case 'electricalServicesTile':
-            yelpCategory = '173101';
+            mapQuestBusinessCategory = '173101';
             break;
         case 'windowInstallationTile':
-            yelpCategory = '175102';
+            mapQuestBusinessCategory = '175102';
             break;
         case 'fencingServicesTile':
-            yelpCategory = '179938';
+            mapQuestBusinessCategory = '179938';
             break;
         case 'garageServicesTile':
-            yelpCategory = '175107';
+            mapQuestBusinessCategory = '175107';
             break;
         case 'sidingServicesTile':
-            yelpCategory = '176111';
+            mapQuestBusinessCategory = '176111';
             break;
         case 'solarPanelTile':
-            yelpCategory = '769932';
+            mapQuestBusinessCategory = '769932';
             break;
         case 'carpetCleaningTile':
-            yelpCategory = '721704';
+            mapQuestBusinessCategory = '721704';
             break;
         case 'shadesAndBlindsTile':
-            yelpCategory = '259198';
+            mapQuestBusinessCategory = '259198';
             break;
         case 'carpetInstallationTile':
-            yelpCategory = '175206';
+            mapQuestBusinessCategory = '175206';
             break;
         case 'paintingServicesTile':
-            yelpCategory = '172101';
+            mapQuestBusinessCategory = '172101';
             break;
         case 'fireplaceServicesTile':
-            yelpCategory = '179939';
+            mapQuestBusinessCategory = '179939';
             break;
         case 'airDuctServicesTile':
-            yelpCategory = '73490202';
+            mapQuestBusinessCategory = '73490202';
             break;
         case 'poolServicesTile':
-            yelpCategory = '179985';
+            mapQuestBusinessCategory = '179985';
             break;
         case 'handymanServicesTile':
-            yelpCategory = '152115';
+            mapQuestBusinessCategory = '152115';
             break;
         default:
-            yelpCategory = '078204';
+            mapQuestBusinessCategory = '078204';
             console.log('');
     }
 
-    return yelpCategory;
+    return mapQuestBusinessCategory;
 
 }
 
@@ -648,10 +642,9 @@ function handleImageTileClick() {
         var receivedImageID = $(this).attr('id');
         alert(receivedImageID);
         receivedImageTileID = receivedImageID;
-        let receivedYelpCatgo = findYelpCategory(receivedImageTileID);
-        // getBusinessesListFromApi(lat, lng, receivedYelpCatgo);
+        let receivedMapQuestBusinessCatgo = findMapQuestBusinessCategory(receivedImageTileID);
         //getBusinessesListFromMapQuestApi(lat, lng, '078204');
-        getBusinessesListFromMapQuestApi(lat, lng, receivedYelpCatgo);
+        getBusinessesListFromMapQuestApi(lat, lng, receivedMapQuestBusinessCatgo);
         provideRoute(routingParamsHolder.currentPage[2]);
     });
 }
