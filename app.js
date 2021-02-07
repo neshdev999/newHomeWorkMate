@@ -6,12 +6,19 @@ var postCode = 28278;
 /* Setup API Headers */
 var myHeaders = new Headers();
 myHeaders.append("Cookie", "JSESSIONID=567F9685339DB8F1A0D7CEB876F61452");
-var yelpHeaders = new Headers();
-yelpHeaders.append("Authorization", "Bearer MBVJWBW1zN3qUwImfoXZa0Nor81lf6ld5qrgZZx1Ab_RU70XFheA0dip2HPGpRQYLm94GFkYML8UuH-FkJ7-SZbKC8Ee9QScqDQgFBWijFRr4cPzTP4bMjkOJa8VYHYx");
+//myHeaders.append("Access-Control-Allow-Origin", "*");
+// var yelpHeaders = new Headers();
+// yelpHeaders.append("Authorization", "Bearer MBVJWBW1zN3qUwImfoXZa0Nor81lf6ld5qrgZZx1Ab_RU70XFheA0dip2HPGpRQYLm94GFkYML8UuH-FkJ7-SZbKC8Ee9QScqDQgFBWijFRr4cPzTP4bMjkOJa8VYHYx");
 // yelpHeaders.append("Access-Control-Allow-Origin", "*");
 var intervalCycleHolder;
-var lat = 0;
-var lng = 0;
+var lat = 35.121676;
+var lng = -81.007845;
+/* Business coordiates */
+var businessesCoordiatesArray = [];
+var receivedDistance = 0;
+let globalArray = [];
+
+
 /********** TEMPLATE GENERATION FUNCTIONS **********/
 
 /*----Home Page Template----*/
@@ -320,13 +327,15 @@ function generateBusinessesListPageMainContent(imageTileID) {
 
 function businessesListMainContentTemplate(imageTileID) {
     const businessesListContentTemplate = generatebusinessesListContentTemplate(imageTileID);
+
     const businessesListFormNavigationControl = businessesListNavigationInputControlBox();
     return [businessesListContentTemplate, businessesListFormNavigationControl];
     //return `<div>Businesses List Main Content ${imageTileID}</div>`;
 }
 
 function generatebusinessesListContentTemplate(imageTileID) {
-    return `<div>Businesses List Main Content ${imageTileID}</div>`;
+    // return `<div>Businesses List Main Content ${imageTileID}</div>`;
+    return `<div id="businessesListPanelContainer" class="hidden"></div>`
 }
 
 function businessesListNavigationInputControlBox() {
@@ -383,36 +392,6 @@ function sliderRender() {
 
 /* MAPQUEST API CALL */
 
-
-
-// function getLatLng(postCode) {
-
-//     if (postCode === undefined) {
-//         postCode = 28278;
-//     }
-
-//     var settings = {
-//         "url": "http://www.mapquestapi.com/geocoding/v1/address?key=GZDv4LmGEWEgYHHXQ91rn8y3QDnDqS2A&country=US&postalCode=" + postCode,
-//         "method": "GET",
-//         "timeout": 0,
-//         "headers": {
-//             "Cookie": "JSESSIONID=567F9685339DB8F1A0D7CEB876F61452"
-//         },
-//     };
-
-//     $.ajax(settings).done(function(response) {
-//         console.log(response);
-//         let latLangObject = response.results['0'].locations['0'].latLng;
-//         //console.log(latLangObject);
-//         return latLangObject;
-//     });
-
-
-// }
-
-// let trialObject = getLatLng(postCode);
-// console.log(trialObject);
-
 function getLatLng(postCode) {
     let url = "http://www.mapquestapi.com/geocoding/v1/address?key=GZDv4LmGEWEgYHHXQ91rn8y3QDnDqS2A&country=US&postalCode=" + postCode;
     fetch(url, {
@@ -449,70 +428,70 @@ function findYelpCategory(imageID) {
 
     switch (imageID) {
         case 'securitySystemsTile':
-            yelpCategory = 'securitysystems';
+            yelpCategory = '874813';
             break;
         case 'pestControlTile':
-            yelpCategory = 'pest_control';
+            yelpCategory = '734201';
             break;
         case 'landscapingTile':
-            yelpCategory = 'landscaping';
+            yelpCategory = '078204';
             break;
         case 'cleaningServicesTile':
-            yelpCategory = 'homecleaning';
+            yelpCategory = '734922';
             break;
         case 'hvacTile':
-            yelpCategory = 'hvac';
+            yelpCategory = '171147';
             break;
         case 'roofingServicesTile':
-            yelpCategory = 'roofing';
+            yelpCategory = '176109';
             break;
         case 'plumbingTile':
-            yelpCategory = 'plumbing';
+            yelpCategory = '171105';
             break;
         case 'electricalServicesTile':
-            yelpCategory = 'electricians';
+            yelpCategory = '173101';
             break;
         case 'windowInstallationTile':
-            yelpCategory = 'windowsinstallation';
+            yelpCategory = '175102';
             break;
         case 'fencingServicesTile':
-            yelpCategory = 'fencing';
+            yelpCategory = '179938';
             break;
         case 'garageServicesTile':
-            yelpCategory = 'garage_door_services';
+            yelpCategory = '175107';
             break;
         case 'sidingServicesTile':
-            yelpCategory = 'vinylsiding';
+            yelpCategory = '176111';
             break;
         case 'solarPanelTile':
-            yelpCategory = 'solarinstallation';
+            yelpCategory = '769932';
             break;
         case 'carpetCleaningTile':
-            yelpCategory = 'carpet_cleaning';
+            yelpCategory = '721704';
             break;
         case 'shadesAndBlindsTile':
-            yelpCategory = 'blinds';
+            yelpCategory = '259198';
             break;
         case 'carpetInstallationTile':
-            yelpCategory = 'carpetinstallation';
+            yelpCategory = '175206';
             break;
         case 'paintingServicesTile':
-            yelpCategory = 'painters';
+            yelpCategory = '172101';
             break;
         case 'fireplaceServicesTile':
-            yelpCategory = 'fireplace';
+            yelpCategory = '179939';
             break;
         case 'airDuctServicesTile':
-            yelpCategory = 'airductcleaning';
+            yelpCategory = '73490202';
             break;
         case 'poolServicesTile':
-            yelpCategory = 'poolservice';
+            yelpCategory = '179985';
             break;
         case 'handymanServicesTile':
-            yelpCategory = 'handyman';
+            yelpCategory = '152115';
             break;
         default:
-            yelpCategory = 'landscaping';
+            yelpCategory = '078204';
             console.log('');
     }
 
@@ -520,52 +499,124 @@ function findYelpCategory(imageID) {
 
 }
 
-// function getBusinessesListFromApi(lat, lng, cat) {
-//     var requestOptions = {
-//         method: 'GET',
-//         headers: yelpHeaders,
-//         redirect: 'follow'
-//     };
+/* Convert meters to miles */
+function getMiles(valInMeters) {
+    return Math.round(valInMeters * 0.000621371);
+}
 
-//     let yelpUrl = "https://api.yelp.com/v3/businesses/search?radius=15000&latitude=" + lat + "&longitude=" + lng + "" + "&limit=5&categories=" + cat;
+function generateBusinessesListPanel(responseJson, businessesDistanceArray) {
+    let businessesNamesArray = [];
+    console.log("businessesDistanceArray");
+    console.log(businessesDistanceArray);
 
-//https://api.yelp.com/v3/businesses/search?radius=15000&latitude=35.157145&longitude=-80.986962&limit=5&categories=painters
+    for (let i = 0; i < responseJson.results.length; i++) {
+        businessesNamesArray.push(responseJson.results[i].name);
+    }
+    console.log("trial");
+    console.log(businessesDistanceArray[0]);
 
-// fetch(yelpUrl, requestOptions)
-//     .then(response => response.text())
-//     .then(result => console.log(result))
-//     .catch(error => console.log('error', error));
+    for (let j = 0; j < responseJson.results.length; j++) {
+        console.log("let: " + businessesDistanceArray[j]);
+        $('#businessesListPanelContainer').append(`
+            <div class="businessItemContainer">
+                <div class="businessNameContainer">Business Name: ${businessesNamesArray[j]}</div>
+                <div class="businessDistanceContainer">Distance: ${businessesDistanceArray[j]} miles</div>         
+            </div>`);
+    }
 
-//     fetch(yelpUrl, {
-//             method: 'GET',
-//             headers: yelpHeaders,
-//             redirect: 'follow',
+    $('#businessesListPanelContainer').removeClass("hidden");
+}
 
-//         })
-//         .then(response => response.json())
-//         .then(
-//             responseJson => {
-//                 console.log(responseJson);
-//             })
-//         .catch(err => {
-//             console.log(`${err.message}`);
-//         })
-// }
 
-function getBusinessesListFromApi(lat, lng, cat) {
-    var settings = {
-        "url": "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?radius=15000&latitude=35.157145&longitude=-80.986962&limit=5&categories=painters",
-        "method": "GET",
-        "timeout": 0,
-        "headers": {
-            "Authorization": "Bearer MBVJWBW1zN3qUwImfoXZa0Nor81lf6ld5qrgZZx1Ab_RU70XFheA0dip2HPGpRQYLm94GFkYML8UuH-FkJ7-SZbKC8Ee9QScqDQgFBWijFRr4cPzTP4bMjkOJa8VYHYx",
-            "Access-Control-Allow-Origin": "*"
-        },
-    };
+/* MapQuest Business List API CALL */
 
-    $.ajax(settings).done(function(response) {
-        console.log(response);
-    });
+async function getBusinessesListFromMapQuestApi(lat, lng, cat) {
+
+    let givenRadiusDistance = '32186';
+
+    let mapQuestBusinessListURL = "http://www.mapquestapi.com/search/v4/place?location=" + lat + "," + lng + "&category=sic:" + cat + "&key=GZDv4LmGEWEgYHHXQ91rn8y3QDnDqS2A&sort=distance&circle=" + lng + "," + lat + "," + givenRadiusDistance;
+
+    fetch(mapQuestBusinessListURL, {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow'
+        })
+        .then(response => response.json())
+        .then(
+            async(responseJson) => {
+                console.log(responseJson);
+                createCurrentBusinessLocationLatLng(responseJson);
+                let outputArray = await processBusinessesLocationLatLng();
+                console.log("outputArray: " + outputArray[0]);
+                console.log("Global Array" + globalArray[0]);
+                console.log(outputArray);
+                generateBusinessesListPanel(responseJson, outputArray);
+            })
+        .catch(err => {
+            console.log(`${err.message}`);
+        })
+}
+
+function createCurrentBusinessLocationLatLng(responseJson) {
+    var businessesCoordiatesCurrentArray = [];
+
+    for (let i = 0; i < responseJson.results.length; i++) {
+        businessesCoordiatesCurrentArray.push(responseJson.results[i].place.geometry.coordinates);
+    }
+
+    businessesCoordiatesArray = JSON.parse(JSON.stringify(businessesCoordiatesCurrentArray));
+}
+
+
+/* MapQuest Distance Finding route API Call */
+
+async function mapQuestDelay(lat, lng, businessLocationLat, businessLocationLng) {
+
+    let mapQuestBusinessListURL = "http://www.mapquestapi.com/directions/v2/route?key=GZDv4LmGEWEgYHHXQ91rn8y3QDnDqS2A&outFormat=json&unit=m&from=" + lat + "," + lng + "&to=" + businessLocationLat + "," + businessLocationLng;
+
+    return fetch(mapQuestBusinessListURL, {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow'
+        })
+        .then(response => response.json())
+        .then(
+            responseJson => {
+                console.log(responseJson);
+                let receivedDistancespl = responseJson.route.distance;
+                console.log(receivedDistancespl);
+                return receivedDistancespl;
+            })
+        .catch(err => {
+            console.log(`${err.message}`);
+            return 0;
+        });
+}
+
+async function getDelayedFetchDistanceValue(bLat, bLng) {
+    let distanceValue = await mapQuestDelay(lat, lng, bLat, bLng);
+    globalArray.push(distanceValue);
+    return distanceValue;
+}
+
+async function processBusinessesLocationLatLng() {
+    let bCurrentLat = 0,
+        bCurrentLng = 0;
+    let distanceArray = [];
+    for (let i = 0; i < businessesCoordiatesArray.length; i++) {
+        bCurrentLng = businessesCoordiatesArray[i][0];
+        bCurrentLat = businessesCoordiatesArray[i][1];
+        let acquiredDistanceValue = await getDelayedFetchDistanceValue(bCurrentLat, bCurrentLng);
+        console.log("acquiredDistanceValue: " + acquiredDistanceValue);
+        distanceArray.push(acquiredDistanceValue);
+    }
+    console.log("trial Me: " + distanceArray[0]);
+    console.log("trial Me: " + distanceArray[1]);
+    console.log("trial Me: " + distanceArray[2]);
+    console.log("trial Me: " + distanceArray[3]);
+    console.log("trial Me: " + distanceArray[4]);
+    console.log(distanceArray);
+    return distanceArray;
 }
 
 
@@ -598,8 +649,9 @@ function handleImageTileClick() {
         alert(receivedImageID);
         receivedImageTileID = receivedImageID;
         let receivedYelpCatgo = findYelpCategory(receivedImageTileID);
-        getBusinessesListFromApi(lat, lng, receivedYelpCatgo);
-
+        // getBusinessesListFromApi(lat, lng, receivedYelpCatgo);
+        //getBusinessesListFromMapQuestApi(lat, lng, '078204');
+        getBusinessesListFromMapQuestApi(lat, lng, receivedYelpCatgo);
         provideRoute(routingParamsHolder.currentPage[2]);
     });
 }
@@ -618,7 +670,6 @@ function handleBusinessesListPageNavigationFormSubmission() {
         provideRoute(routingParamsHolder.currentPage[0]);
     });
 }
-
 
 /********** Routing Function **********/
 
@@ -640,8 +691,6 @@ function provideRoute(checkFlag) {
         handleBusinessesListPageNavigationFormSubmission();
     }
 }
-
-
 
 /********** Initialization Function **********/
 
