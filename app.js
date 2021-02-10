@@ -518,7 +518,7 @@ function changeSliderImages(slide) {
         alt: slide.sliderImages[imageChangeCounter].altText
     });
 
-    if (imageChangeCounter === 23) {
+    if (imageChangeCounter === 21) {
         imageChangeCounter = 0;
     } else {
         ++imageChangeCounter;
