@@ -13,6 +13,20 @@ var lng = -81.007845;
 var businessesCoordiatesArray = [];
 var receivedDistance = 0;
 let globalArray = [];
+let currentDetailedBusinessInfoPageHeader = "Business Name";
+let defaultBusinessInfoPageStore = {
+    pages: [{
+        currentPageSlug: '/us/south-carolina/total-security-356139046',
+        currentPageCoordinates: [-80.935592, 34.903086]
+    }]
+};
+
+let selectedBusinessInfoPageStore = {
+    names: [],
+    relatedCoordiates: [],
+    slugs: [],
+    properties: []
+};
 
 
 /********** TEMPLATE GENERATION FUNCTIONS **********/
@@ -31,7 +45,7 @@ function generateHomePageHeader() {
 }
 
 function headerContentTemplate() {
-    return `<h1>New Home Workmate</h1><h2>Are you a new home buyer and want to find out nearby home services available at your fingertips? No worry! You are at the right place!!!</h2>`;
+    return `<div class="mainHeaderContainer"><h1>New Home Workmate</h1><h2>Are you a new home buyer and want to find out nearby home services available at your fingertips? No worry! You are at the right place!!!</h2><div>`;
 }
 
 /* home page main section */
@@ -51,7 +65,17 @@ function generateSliderTemplate() {
 }
 
 function searchInputControlBox() {
-    return `<div class="inputControlFormContainer"><form id="homePageForm"><input id="zip" name="zip" type="text" pattern="[0-9]*" placeholder="Enter your zip code"><input type="submit" value="Submit"></form></div>`
+    return `
+    <div>
+        <div class="inputControlFormContainer">
+            <form id="homePageForm">
+                <input id="zip" name="zip" type="text" pattern="[0-9]*" placeholder="Enter your zip code">
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div id="serverErrorReportContainer">
+        </div>
+    </div>`
 }
 
 /*----Service Menu Page Template----*/
@@ -79,7 +103,6 @@ function serviceMenuMainContentTemplate() {
     const serviceTileImagesTemplate = generateServiceTileImagesTemplate();
     const formNavigationControl = serviceMenuNavigationInputControlBox();
     return [serviceTileImagesTemplate, formNavigationControl];
-
     //return `<h3>Service Menu main content goes here</h3>`;
 }
 
@@ -176,7 +199,7 @@ function generateServiceTileImagesTemplate() {
 }
 
 function serviceMenuNavigationInputControlBox() {
-    return `<div class="serviceMenuPageNavigationFormContainer"><form id="serviceMenuPageNavigationForm"><input type="submit" value="Go Back to Home Page"/></form></div>`;
+    return `<div class="serviceMenuPageNavigationFormContainer"><form id="serviceMenuPageNavigationForm"><input type="submit" value="Go Back to Home Page" class="serviceMenuPageButton"/></form></div>`;
 }
 
 /*----Businesses List Page Template----*/
@@ -323,7 +346,6 @@ function generateBusinessesListPageMainContent(imageTileID) {
 
 function businessesListMainContentTemplate(imageTileID) {
     const businessesListContentTemplate = generatebusinessesListContentTemplate(imageTileID);
-
     const businessesListFormNavigationControl = businessesListNavigationInputControlBox();
     return [businessesListContentTemplate, businessesListFormNavigationControl];
     //return `<div>Businesses List Main Content ${imageTileID}</div>`;
@@ -331,24 +353,162 @@ function businessesListMainContentTemplate(imageTileID) {
 
 function generatebusinessesListContentTemplate(imageTileID) {
     // return `<div>Businesses List Main Content ${imageTileID}</div>`;
-    return `<div id="businessesListPanelContainer" class="hidden"></div>`
+    return `
+    <div id="businessesListPanelContainer" class="hidden">
+        <div id="serverErrorReportServicePageContainer">
+        </div>
+    </div>`
 }
 
 function businessesListNavigationInputControlBox() {
     return `
     <div id="businessesListNavigationFormContainer">
-        <div>
+        <div class="businessListNavigationFormItem">
             <form id="businessListNavigationFormReturnServicesMenu">
-                <input type="submit" value="Go Back to Services Menu">
+                <input type="submit" value="Go Back to Services Menu" class="businessListNavigationButton">
             </form>
         </div>
-        <div>
+        <div class="businessListNavigationFormItem">
             <form id="businessListNavigationFormReturnHomePageMenu">
-                <input type="submit" value="Go Back to Home Page">
+                <input type="submit" value="Go Back to Home Page" class="businessListNavigationButton">
             </form>
         </div>
     </div>`
 }
+
+/* Detailed Business Info Page */
+
+function detailedBusinessInfoPage() {
+    generateDetailedBusinessInfoPageHeader();
+    generateDetailedBusinessInfoPageMapContent();
+    generateDetailedBusinessInfoPageMainContent();
+}
+
+function generateDetailedBusinessInfoPageHeader() {
+    const detailedBusinessInfoPageBaseHeaderTemplate = detailedBusinessInfoPageHeaderContentTemplate();
+    $('.headerWorkMateApp').html(detailedBusinessInfoPageBaseHeaderTemplate);
+}
+
+function generateDetailedBusinessInfoPageMapContent() {
+    const detailedBusinessInfoPageBaseMapTemplate = detailedBusinessInfoPageMapContentTemplate();
+    $('.headerWorkMateApp').append(detailedBusinessInfoPageBaseMapTemplate);
+}
+
+function detailedBusinessInfoPageMapContentTemplate() {
+    return `
+    <div class="mapContainer">
+        <div id="map" style="width: 100%; height: 530px;"></div>
+    </div>`
+}
+
+function detailedBusinessInfoPageHeaderContentTemplate() {
+    return `
+    <div class="headerContainer">
+    <div class="headerItem">Detailed Info Page : ${currentDetailedBusinessInfoPageHeader}</div>
+    </div>`;
+}
+
+function generateDetailedBusinessInfoPageMainContent() {
+    const detailedBusinessInfoPageBaseMainTemplate = detailedBusinessInfoPageMainContentTemplate(selectedBusinessInfoPageStore);
+    $('.mainWorkMateApp').html(detailedBusinessInfoPageBaseMainTemplate);
+}
+
+function detailedBusinessInfoPageMainContentTemplate(selectedBusinessInfoPageStore) {
+    const detailedBusinessInfoPageContentTemplate = generateBusinessInfoPageContentTemplate(selectedBusinessInfoPageStore);
+    const detailedBusinessInfoPageFormNavigationControl = businessInfoPageNavigationInputControlBox();
+    return [detailedBusinessInfoPageContentTemplate, detailedBusinessInfoPageFormNavigationControl];
+}
+
+function generateBusinessInfoPageContentTemplate(selectedBusinessInfoPageStore) {
+    let passLat, passLng, holderId, passSlug, srcAddress, srcDetailsAddress, passStreet, passCity, passStateCode, passPostalCode, passCountryCode;
+    if (selectedBusinessInfoPageStore.names.length !== 0) {
+        for (let i = 0; i <= selectedBusinessInfoPageStore.names.length; i++) {
+            if (selectedBusinessInfoPageStore.names[i] === currentDetailedBusinessInfoPageHeader) {
+                holderId = i;
+                passLat = selectedBusinessInfoPageStore.relatedCoordiates[i][1];
+                passLng = selectedBusinessInfoPageStore.relatedCoordiates[i][0];
+                passSlug = selectedBusinessInfoPageStore.slugs[i];
+                passStreet = selectedBusinessInfoPageStore.properties[i].street;
+                passCity = selectedBusinessInfoPageStore.properties[i].city;
+                passStateCode = selectedBusinessInfoPageStore.properties[i].stateCode;
+                passPostalCode = selectedBusinessInfoPageStore.properties[i].postalCode;
+                passCountryCode = selectedBusinessInfoPageStore.properties[i].countryCode;
+            }
+        }
+    }
+
+    srcAddress = "https://www.mapquest.com/embed" + passSlug + "?center=" + passLat + "," + passLng + "&zoom=15&maptype=map";
+    //srcDetailsAddress = "https://www.mapquest.com" + passSlug + "?maptype=map";
+    srcDetailsAddress = "https://www.mapquest.com" + passSlug;
+    constructDestinationAddress = passStreet + ", " + passCity + ", " + passStateCode + " " + passPostalCode;
+    generateMapQuestMapTile(constructDestinationAddress, postCode);
+
+    return `
+    <div>
+    <div class="addressContainer">
+        <div class="addressHeader">ADDRESS</div>
+        <div class="addressUlListContainer">
+            <ul class="addressUlList">
+                <li>${passStreet}</li>
+                <li>${passCity}</li>
+                <li>${passStateCode}</li>
+                <li>${passPostalCode}</li>
+                <li>${passCountryCode}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="morInfoContainer">
+        <div class="moreInfoItem"><a href="${srcDetailsAddress}" target=”_blank”>More Details</a></div>
+    </div>
+    </div>`;
+}
+
+function businessInfoPageNavigationInputControlBox() {
+
+    return `
+        <div id="businessInfoPageNavigationFormContainer">
+            <div class="businessInfoPageNavigationFormItem">
+                <form id="businessInfoPageNavigationFormReturnListsMenu">
+                    <input type="submit" value="Go Back to Businesses List" class="businessInfoPageNavigationButton">
+                </form>
+            </div>
+            <div class="businessInfoPageNavigationFormItem">
+                <form id="businessInfoPageNavigationFormReturnHomePageMenu">
+                    <input type="submit" value="Go Back to Home Page" class="businessInfoPageNavigationButton">
+                </form>
+            </div>
+        </div>`;
+}
+
+
+/* <span id="mapIframe" class="mapItems">
+<iframe height="400" width="300" border="0" marginwidth="0" marginheight="0" src="${srcAddress}"></iframe>
+</span>
+<span id="locationDetailsIframe" class="mapItems">
+<iframe src="${srcDetailsAddress}" height="400" width="400" title="mapquest location details"></iframe>
+<a href="${srcDetailsAddress}">More Details</a>
+</span> */
+
+
+/*********** Map Generation Functions ***********/
+
+function generateMapQuestMapTile(destAddress, pCode) {
+    // L.mapquest.key = 'lYrP4vF3Uk5zgTiGGuEzQGwGIVDGuy24';
+
+    L.mapquest.key = 'GZDv4LmGEWEgYHHXQ91rn8y3QDnDqS2A';
+
+    var map = L.mapquest.map('map', {
+        center: [lat, lng],
+        layers: L.mapquest.tileLayer('map'),
+        zoom: 13
+    });
+
+    L.mapquest.directions().route({
+        start: pCode,
+        end: destAddress
+    });
+}
+
 
 /********** RENDER FUNCTION(S) **********/
 
@@ -512,12 +672,11 @@ function generateBusinessesListPanel(responseJson, businessesDistanceArray) {
     for (let j = 0; j < responseJson.results.length; j++) {
         console.log("let: " + businessesDistanceArray[j]);
         $('#businessesListPanelContainer').append(`
-            <div class="businessItemContainer">
-                <div class="businessNameContainer">Business Name: ${businessesNamesArray[j]}</div>
+            <div class="businessItemContainer">         
+                <div class="businessNameContainer">${businessesNamesArray[j]}</div>
                 <div class="businessDistanceContainer">Distance: ${businessesDistanceArray[j]} miles</div>         
             </div>`);
     }
-
     $('#businessesListPanelContainer').removeClass("hidden");
 }
 
@@ -528,7 +687,7 @@ async function getBusinessesListFromMapQuestApi(lat, lng, cat) {
 
     let givenRadiusDistance = '32186';
 
-    let mapQuestBusinessListURL = "http://www.mapquestapi.com/search/v4/place?location=" + lat + "," + lng + "&category=sic:" + cat + "&key=GZDv4LmGEWEgYHHXQ91rn8y3QDnDqS2A&sort=distance&circle=" + lng + "," + lat + "," + givenRadiusDistance;
+    let mapQuestBusinessListURL = "http://www.mapquestapi.com/search/v4/place?location=" + lng + "," + lat + "&category=sic:" + cat + "&key=GZDv4LmGEWEgYHHXQ91rn8y3QDnDqS2A&sort=distance&circle=" + lng + "," + lat + "," + givenRadiusDistance;
 
     fetch(mapQuestBusinessListURL, {
             method: 'GET',
@@ -539,6 +698,13 @@ async function getBusinessesListFromMapQuestApi(lat, lng, cat) {
         .then(
             async(responseJson) => {
                 console.log(responseJson);
+                console.log("Nesh: ");
+                console.log(responseJson.results[0].place.geometry.coordinates);
+                console.log(responseJson.results[0].slug);
+
+                gatherInfoForDetailedBusinessInfoPage(responseJson);
+                console.log("selectedBusinessInfoPageStore: ");
+                console.log(selectedBusinessInfoPageStore);
                 createCurrentBusinessLocationLatLng(responseJson);
                 let outputArray = await processBusinessesLocationLatLng();
                 console.log("outputArray: " + outputArray[0]);
@@ -548,6 +714,8 @@ async function getBusinessesListFromMapQuestApi(lat, lng, cat) {
             })
         .catch(err => {
             console.log(`${err.message}`);
+            $('#serverErrorReportServicePageContainer').text(`Server has responded with error 😪  : ${err.message} 😫`);
+            $('#serverErrorReportServicePageContainer').css('display', 'block');
         })
 }
 
@@ -604,13 +772,25 @@ async function processBusinessesLocationLatLng() {
         console.log("acquiredDistanceValue: " + acquiredDistanceValue);
         distanceArray.push(acquiredDistanceValue);
     }
-    console.log("trial Me: " + distanceArray[0]);
-    console.log("trial Me: " + distanceArray[1]);
-    console.log("trial Me: " + distanceArray[2]);
-    console.log("trial Me: " + distanceArray[3]);
-    console.log("trial Me: " + distanceArray[4]);
+    // console.log("trial Me: " + distanceArray[0]);
+    // console.log("trial Me: " + distanceArray[1]);
+    // console.log("trial Me: " + distanceArray[2]);
+    // console.log("trial Me: " + distanceArray[3]);
+    // console.log("trial Me: " + distanceArray[4]);
     console.log(distanceArray);
     return distanceArray;
+}
+
+/* Detailed Business Info Page */
+
+function gatherInfoForDetailedBusinessInfoPage(responseJson) {
+    let totalLength = responseJson.results.length;
+    for (let i = 0; i < totalLength; i++) {
+        selectedBusinessInfoPageStore.names.push(responseJson.results[i].name);
+        selectedBusinessInfoPageStore.relatedCoordiates.push(responseJson.results[i].place.geometry.coordinates);
+        selectedBusinessInfoPageStore.slugs.push(responseJson.results[i].slug);
+        selectedBusinessInfoPageStore.properties.push(responseJson.results[i].place.properties);
+    }
 }
 
 
@@ -622,9 +802,17 @@ function handleHomePageFormSubmission() {
         alert("form handler is called");
         event.preventDefault();
         postCode = $('#zip').val();
-        console.log(postCode);
-        getLatLng(postCode);
-        provideRoute(routingParamsHolder.currentPage[1]);
+        if (validateZipFormat(postCode) && validateForRealZipCode(postCode, zipCodesStore)) {
+            //validateForRealZipCode(postCode, zipCodesStore);
+            //alert('valid zip');
+            console.log(postCode);
+            getLatLng(postCode);
+            provideRoute(routingParamsHolder.currentPage[1]);
+        } else {
+            //alert('invalid zip');
+            $('#serverErrorReportContainer').text(`Invalid Zipcode  😫: Please enter valid Zipcode 😪 `);
+            $('#serverErrorReportContainer').css('display', 'block');
+        }
     });
 }
 
@@ -646,6 +834,8 @@ function handleImageTileClick() {
         //getBusinessesListFromMapQuestApi(lat, lng, '078204');
         getBusinessesListFromMapQuestApi(lat, lng, receivedMapQuestBusinessCatgo);
         provideRoute(routingParamsHolder.currentPage[2]);
+        //getBusinessesListFromMapQuestApi(lat, lng, receivedMapQuestBusinessCatgo).then(provideRoute(routingParamsHolder.currentPage[2]));
+        //provideRoute(routingParamsHolder.currentPage[2]);
     });
 }
 
@@ -662,6 +852,47 @@ function handleBusinessesListPageNavigationFormSubmission() {
         event.preventDefault();
         provideRoute(routingParamsHolder.currentPage[0]);
     });
+}
+
+
+function handleDetailedBusinessInfoPageBNameClick() {
+    $('#businessesListPanelContainer').on('click', '.businessNameContainer', function(event) {
+        event.preventDefault();
+        console.log("I am clicked");
+        alert('I am clicked');
+        let receivedBName = $(event.currentTarget).text();
+        console.log(receivedBName);
+        currentDetailedBusinessInfoPageHeader = receivedBName;
+        provideRoute(routingParamsHolder.currentPage[3]);
+    });
+}
+
+/* Detailed Business Info Page */
+function handleBusinessInfoPageNavigationFormSubmission() {
+    $('#businessInfoPageNavigationFormReturnListsMenu').submit(function(event) {
+        event.preventDefault();
+        let receivedMapQuestBusinessCatgo = findMapQuestBusinessCategory(receivedImageTileID);
+        getBusinessesListFromMapQuestApi(lat, lng, receivedMapQuestBusinessCatgo);
+        provideRoute(routingParamsHolder.currentPage[2]);
+    });
+    $('#businessInfoPageNavigationFormReturnHomePageMenu').submit(function(event) {
+        event.preventDefault();
+        provideRoute(routingParamsHolder.currentPage[0]);
+    });
+}
+
+/********** UTILITY FUNCTIONS **********/
+
+function validateZipFormat(value) {
+    return (/(^\d{5}$)|(^\d{5}-\d{4}$)/).test(value);
+}
+
+function validateForRealZipCode(value, zipCodesStore) {
+    let check = false;
+    // let passVal = parseInt(value);
+    // let object = { Zipcode: value };
+    check = zipCodesStore.some(item => item.ZipCode === value);
+    return check;
 }
 
 /********** Routing Function **********/
@@ -682,6 +913,12 @@ function provideRoute(checkFlag) {
         clearInterval(intervalCycleHolder);
         businessesListPage(receivedImageTileID, businessesListStore);
         handleBusinessesListPageNavigationFormSubmission();
+        handleDetailedBusinessInfoPageBNameClick();
+    } else if (checkFlag === 'detailedSingleBusinessInfoPage') {
+        /* Clear Home Page banner interval  */
+        clearInterval(intervalCycleHolder);
+        detailedBusinessInfoPage();
+        handleBusinessInfoPageNavigationFormSubmission();
     }
 }
 
