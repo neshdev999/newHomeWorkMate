@@ -228,16 +228,6 @@ html {
     font-weight: bold;
 }
 
-#mapIframe {
-    text-align: center;
-    margin: 1%;
-}
-
-#locationDetailsIframe {
-    text-align: center;
-    margin: 1%;
-}
-
 .headerContainer {
     display: flex;
     flex-direction: column;

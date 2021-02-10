@@ -105,7 +105,6 @@ function serviceMenuMainContentTemplate() {
     const serviceTileImagesTemplate = generateServiceTileImagesTemplate();
     const formNavigationControl = serviceMenuNavigationInputControlBox();
     return [serviceTileImagesTemplate, formNavigationControl];
-    //return `<h3>Service Menu main content goes here</h3>`;
 }
 
 function generateServiceTileImagesTemplate() {
@@ -350,11 +349,9 @@ function businessesListMainContentTemplate() {
     const businessesListContentTemplate = generatebusinessesListContentTemplate();
     const businessesListFormNavigationControl = businessesListNavigationInputControlBox();
     return [businessesListContentTemplate, businessesListFormNavigationControl];
-    //return `<div>Businesses List Main Content ${imageTileID}</div>`;
 }
 
 function generatebusinessesListContentTemplate() {
-    // return `<div>Businesses List Main Content ${imageTileID}</div>`;
     return `
     <div id="businessesListPanelContainer" class="hidden">
         <div id="serverErrorReportServicePageContainer">
@@ -443,7 +440,6 @@ function generateBusinessInfoPageContentTemplate(selectedBusinessInfoPageStore) 
     }
 
     srcAddress = "https://www.mapquest.com/embed" + passSlug + "?center=" + passLat + "," + passLng + "&zoom=15&maptype=map";
-    //srcDetailsAddress = "https://www.mapquest.com" + passSlug + "?maptype=map";
     srcDetailsAddress = "https://www.mapquest.com" + passSlug;
     constructDestinationAddress = passStreet + ", " + passCity + ", " + passStateCode + " " + passPostalCode;
     generateMapQuestMapTile(constructDestinationAddress, postCode);
@@ -485,29 +481,15 @@ function businessInfoPageNavigationInputControlBox() {
         </div>`;
 }
 
-
-/* <span id="mapIframe" class="mapItems">
-<iframe height="400" width="300" border="0" marginwidth="0" marginheight="0" src="${srcAddress}"></iframe>
-</span>
-<span id="locationDetailsIframe" class="mapItems">
-<iframe src="${srcDetailsAddress}" height="400" width="400" title="mapquest location details"></iframe>
-<a href="${srcDetailsAddress}">More Details</a>
-</span> */
-
-
 /*********** Map Generation Functions ***********/
 
 function generateMapQuestMapTile(destAddress, pCode) {
-    // L.mapquest.key = 'lYrP4vF3Uk5zgTiGGuEzQGwGIVDGuy24';
-
     L.mapquest.key = 'GZDv4LmGEWEgYHHXQ91rn8y3QDnDqS2A';
-
     var map = L.mapquest.map('map', {
         center: [lat, lng],
         layers: L.mapquest.tileLayer('map'),
         zoom: 13
     });
-
     L.mapquest.directions().route({
         start: pCode,
         end: destAddress
@@ -805,11 +787,8 @@ function handleImageTileClick() {
         var receivedImageID = $(this).attr('id');
         receivedImageTileID = receivedImageID;
         let receivedMapQuestBusinessCatgo = findMapQuestBusinessCategory(receivedImageTileID);
-        //getBusinessesListFromMapQuestApi(lat, lng, '078204');
         getBusinessesListFromMapQuestApi(lat, lng, receivedMapQuestBusinessCatgo);
         provideRoute(routingParamsHolder.currentPage[2]);
-        //getBusinessesListFromMapQuestApi(lat, lng, receivedMapQuestBusinessCatgo).then(provideRoute(routingParamsHolder.currentPage[2]));
-        //provideRoute(routingParamsHolder.currentPage[2]);
     });
 }
 
@@ -858,8 +837,6 @@ function validateZipFormat(value) {
 
 function validateForRealZipCode(value, zipCodesStore) {
     let check = false;
-    // let passVal = parseInt(value);
-    // let object = { Zipcode: value };
     check = zipCodesStore.some(item => item.ZipCode === value);
     return check;
 }
