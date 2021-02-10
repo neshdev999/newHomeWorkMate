@@ -28,6 +28,8 @@ let selectedBusinessInfoPageStore = {
     properties: []
 };
 
+var zipCodeErrorStatus = false;
+
 
 /********** TEMPLATE GENERATION FUNCTIONS **********/
 
@@ -206,7 +208,7 @@ function serviceMenuNavigationInputControlBox() {
 
 function businessesListPage(imageTileID, businessImagesStore) {
     generateBusinessesListPageHeader(imageTileID, businessImagesStore);
-    generateBusinessesListPageMainContent(imageTileID);
+    generateBusinessesListPageMainContent();
 }
 
 function generateBusinessesListPageHeader(imageTileID, businessImagesStore) {
@@ -339,19 +341,19 @@ function businessesListPageHeaderContentTemplate(imageTileID, store) {
     </div>`;
 }
 
-function generateBusinessesListPageMainContent(imageTileID) {
-    const businessesListBaseMainContentTemplate = businessesListMainContentTemplate(imageTileID);
+function generateBusinessesListPageMainContent() {
+    const businessesListBaseMainContentTemplate = businessesListMainContentTemplate();
     $('.mainWorkMateApp').html(businessesListBaseMainContentTemplate);
 }
 
-function businessesListMainContentTemplate(imageTileID) {
-    const businessesListContentTemplate = generatebusinessesListContentTemplate(imageTileID);
+function businessesListMainContentTemplate() {
+    const businessesListContentTemplate = generatebusinessesListContentTemplate();
     const businessesListFormNavigationControl = businessesListNavigationInputControlBox();
     return [businessesListContentTemplate, businessesListFormNavigationControl];
     //return `<div>Businesses List Main Content ${imageTileID}</div>`;
 }
 
-function generatebusinessesListContentTemplate(imageTileID) {
+function generatebusinessesListContentTemplate() {
     // return `<div>Businesses List Main Content ${imageTileID}</div>`;
     return `
     <div id="businessesListPanelContainer" class="hidden">
@@ -362,16 +364,19 @@ function generatebusinessesListContentTemplate(imageTileID) {
 
 function businessesListNavigationInputControlBox() {
     return `
-    <div id="businessesListNavigationFormContainer">
-        <div class="businessListNavigationFormItem">
-            <form id="businessListNavigationFormReturnServicesMenu">
-                <input type="submit" value="Go Back to Services Menu" class="businessListNavigationButton">
-            </form>
-        </div>
-        <div class="businessListNavigationFormItem">
-            <form id="businessListNavigationFormReturnHomePageMenu">
-                <input type="submit" value="Go Back to Home Page" class="businessListNavigationButton">
-            </form>
+    <div>
+        <div id="distanceErrorContainer"></div>
+        <div id="businessesListNavigationFormContainer">
+            <div class="businessListNavigationFormItem">
+                <form id="businessListNavigationFormReturnServicesMenu">
+                    <input type="submit" value="Go Back to Services Menu" class="businessListNavigationButton">
+                </form>
+            </div>
+            <div class="businessListNavigationFormItem">
+                <form id="businessListNavigationFormReturnHomePageMenu">
+                    <input type="submit" value="Go Back to Home Page" class="businessListNavigationButton">
+                </form>
+            </div>
         </div>
     </div>`
 }
@@ -556,23 +561,20 @@ function getLatLng(postCode) {
         .then(response => response.json())
         .then(
             responseJson => {
-                //console.log(responseJson);
                 let latLngObject = responseJson.results['0'].locations['0'].latLng;
-                //console.log(latLngObject);
                 receiveLatLngObject(latLngObject);
             })
         .catch(err => {
-            console.log(`${err.message}`);
+            zipCodeErrorStatus = true;
+            $('#serverErrorReportContainer').text(`Server has responded with error 😪  : ${err.message} 😫`);
         })
 }
 
 function receiveLatLngObject(latLng) {
     let receivedLat = latLng["lat"];
     let receivedLng = latLng["lng"];
-    console.log(receivedLat);
     lat = receivedLat;
     lng = receivedLng;
-    console.log(receivedLng);
 }
 
 /* Gather relevant category for API CALL */
@@ -660,17 +662,11 @@ function getMiles(valInMeters) {
 
 function generateBusinessesListPanel(responseJson, businessesDistanceArray) {
     let businessesNamesArray = [];
-    console.log("businessesDistanceArray");
-    console.log(businessesDistanceArray);
-
     for (let i = 0; i < responseJson.results.length; i++) {
         businessesNamesArray.push(responseJson.results[i].name);
     }
-    console.log("trial");
-    console.log(businessesDistanceArray[0]);
 
     for (let j = 0; j < responseJson.results.length; j++) {
-        console.log("let: " + businessesDistanceArray[j]);
         $('#businessesListPanelContainer').append(`
             <div class="businessItemContainer">         
                 <div class="businessNameContainer">${businessesNamesArray[j]}</div>
@@ -697,23 +693,12 @@ async function getBusinessesListFromMapQuestApi(lat, lng, cat) {
         .then(response => response.json())
         .then(
             async(responseJson) => {
-                console.log(responseJson);
-                console.log("Nesh: ");
-                console.log(responseJson.results[0].place.geometry.coordinates);
-                console.log(responseJson.results[0].slug);
-
                 gatherInfoForDetailedBusinessInfoPage(responseJson);
-                console.log("selectedBusinessInfoPageStore: ");
-                console.log(selectedBusinessInfoPageStore);
                 createCurrentBusinessLocationLatLng(responseJson);
                 let outputArray = await processBusinessesLocationLatLng();
-                console.log("outputArray: " + outputArray[0]);
-                console.log("Global Array" + globalArray[0]);
-                console.log(outputArray);
                 generateBusinessesListPanel(responseJson, outputArray);
             })
         .catch(err => {
-            console.log(`${err.message}`);
             $('#serverErrorReportServicePageContainer').text(`Server has responded with error 😪  : ${err.message} 😫`);
             $('#serverErrorReportServicePageContainer').css('display', 'block');
         })
@@ -744,13 +729,12 @@ async function mapQuestDelay(lat, lng, businessLocationLat, businessLocationLng)
         .then(response => response.json())
         .then(
             responseJson => {
-                console.log(responseJson);
                 let receivedDistancespl = responseJson.route.distance;
-                console.log(receivedDistancespl);
                 return receivedDistancespl;
             })
         .catch(err => {
-            console.log(`${err.message}`);
+            $('#distanceErrorContainer').text(`Server has responded with error 😪  : ${err.message} 😫`);
+            $('#serverErrorReportContainer').css('display', 'block');
             return 0;
         });
 }
@@ -769,15 +753,8 @@ async function processBusinessesLocationLatLng() {
         bCurrentLng = businessesCoordiatesArray[i][0];
         bCurrentLat = businessesCoordiatesArray[i][1];
         let acquiredDistanceValue = await getDelayedFetchDistanceValue(bCurrentLat, bCurrentLng);
-        console.log("acquiredDistanceValue: " + acquiredDistanceValue);
         distanceArray.push(acquiredDistanceValue);
     }
-    // console.log("trial Me: " + distanceArray[0]);
-    // console.log("trial Me: " + distanceArray[1]);
-    // console.log("trial Me: " + distanceArray[2]);
-    // console.log("trial Me: " + distanceArray[3]);
-    // console.log("trial Me: " + distanceArray[4]);
-    console.log(distanceArray);
     return distanceArray;
 }
 
@@ -799,17 +776,16 @@ function gatherInfoForDetailedBusinessInfoPage(responseJson) {
 /* Home Page */
 function handleHomePageFormSubmission() {
     $('#homePageForm').submit(function(event) {
-        alert("form handler is called");
         event.preventDefault();
         postCode = $('#zip').val();
         if (validateZipFormat(postCode) && validateForRealZipCode(postCode, zipCodesStore)) {
-            //validateForRealZipCode(postCode, zipCodesStore);
-            //alert('valid zip');
-            console.log(postCode);
             getLatLng(postCode);
-            provideRoute(routingParamsHolder.currentPage[1]);
+            if (zipCodeErrorStatus === false) {
+                provideRoute(routingParamsHolder.currentPage[1]);
+            } else {
+                $('#serverErrorReportContainer').css('display', 'block');
+            }
         } else {
-            //alert('invalid zip');
             $('#serverErrorReportContainer').text(`Invalid Zipcode  😫: Please enter valid Zipcode 😪 `);
             $('#serverErrorReportContainer').css('display', 'block');
         }
@@ -819,7 +795,6 @@ function handleHomePageFormSubmission() {
 /* Services Menu Page */
 function handleServiceMenuPageNavigationFormSubmission() {
     $('#serviceMenuPageNavigationForm').submit(function(event) {
-        alert("Going Back to Home page");
         event.preventDefault();
         provideRoute(routingParamsHolder.currentPage[0]);
     });
@@ -828,7 +803,6 @@ function handleServiceMenuPageNavigationFormSubmission() {
 function handleImageTileClick() {
     $('img').on('click', function() {
         var receivedImageID = $(this).attr('id');
-        alert(receivedImageID);
         receivedImageTileID = receivedImageID;
         let receivedMapQuestBusinessCatgo = findMapQuestBusinessCategory(receivedImageTileID);
         //getBusinessesListFromMapQuestApi(lat, lng, '078204');
@@ -843,12 +817,10 @@ function handleImageTileClick() {
 
 function handleBusinessesListPageNavigationFormSubmission() {
     $('#businessListNavigationFormReturnServicesMenu').submit(function(event) {
-        alert('Go Back to Services Menu');
         event.preventDefault();
         provideRoute(routingParamsHolder.currentPage[1]);
     });
     $('#businessListNavigationFormReturnHomePageMenu').submit(function(event) {
-        alert('Go Back to Home Page');
         event.preventDefault();
         provideRoute(routingParamsHolder.currentPage[0]);
     });
@@ -858,10 +830,7 @@ function handleBusinessesListPageNavigationFormSubmission() {
 function handleDetailedBusinessInfoPageBNameClick() {
     $('#businessesListPanelContainer').on('click', '.businessNameContainer', function(event) {
         event.preventDefault();
-        console.log("I am clicked");
-        alert('I am clicked');
         let receivedBName = $(event.currentTarget).text();
-        console.log(receivedBName);
         currentDetailedBusinessInfoPageHeader = receivedBName;
         provideRoute(routingParamsHolder.currentPage[3]);
     });

@@ -127564,8 +127564,5 @@ const zipCodesStore= [
   },
   {
     ZipCode: "97475"
-  },
-  {
-    ZipCode: ""
   }
 ];

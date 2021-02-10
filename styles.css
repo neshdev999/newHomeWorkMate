@@ -185,6 +185,18 @@ html {
     display: none;
 }
 
+#distanceErrorContainer {
+    display: none;
+    background: tomato;
+    color: turquoise;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    margin: 2%;
+    padding: 1%;
+    border-radius: 2px;
+    text-align: center;
+}
+
 
 /* Detailed Business Info Page */
 
