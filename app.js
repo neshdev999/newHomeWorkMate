@@ -547,7 +547,7 @@ function sliderRender() {
 /* MAPQUEST API CALL */
 
 function getLatLng(postCode) {
-    let url = "http://www.mapquestapi.com/geocoding/v1/address?key=GZDv4LmGEWEgYHHXQ91rn8y3QDnDqS2A&country=US&postalCode=" + postCode;
+    let url = "https://www.mapquestapi.com/geocoding/v1/address?key=GZDv4LmGEWEgYHHXQ91rn8y3QDnDqS2A&country=US&postalCode=" + postCode;
     fetch(url, {
             method: 'GET',
             headers: myHeaders,
@@ -687,7 +687,7 @@ async function getBusinessesListFromMapQuestApi(lat, lng, cat) {
 
     let givenRadiusDistance = '32186';
 
-    let mapQuestBusinessListURL = "http://www.mapquestapi.com/search/v4/place?location=" + lng + "," + lat + "&category=sic:" + cat + "&key=GZDv4LmGEWEgYHHXQ91rn8y3QDnDqS2A&sort=distance&circle=" + lng + "," + lat + "," + givenRadiusDistance;
+    let mapQuestBusinessListURL = "https://www.mapquestapi.com/search/v4/place?location=" + lng + "," + lat + "&category=sic:" + cat + "&key=GZDv4LmGEWEgYHHXQ91rn8y3QDnDqS2A&sort=distance&circle=" + lng + "," + lat + "," + givenRadiusDistance;
 
     fetch(mapQuestBusinessListURL, {
             method: 'GET',
@@ -734,7 +734,7 @@ function createCurrentBusinessLocationLatLng(responseJson) {
 
 async function mapQuestDelay(lat, lng, businessLocationLat, businessLocationLng) {
 
-    let mapQuestBusinessListURL = "http://www.mapquestapi.com/directions/v2/route?key=GZDv4LmGEWEgYHHXQ91rn8y3QDnDqS2A&outFormat=json&unit=m&from=" + lat + "," + lng + "&to=" + businessLocationLat + "," + businessLocationLng;
+    let mapQuestBusinessListURL = "https://www.mapquestapi.com/directions/v2/route?key=GZDv4LmGEWEgYHHXQ91rn8y3QDnDqS2A&outFormat=json&unit=m&from=" + lat + "," + lng + "&to=" + businessLocationLat + "," + businessLocationLng;
 
     return fetch(mapQuestBusinessListURL, {
             method: 'GET',
