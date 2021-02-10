@@ -353,6 +353,7 @@ function businessesListMainContentTemplate() {
 
 function generatebusinessesListContentTemplate() {
     return `
+    <div id="loadingIndicatorContainer"><div id="loading"></div></div>
     <div id="businessesListPanelContainer" class="hidden">
         <div id="serverErrorReportServicePageContainer">
         </div>
@@ -655,6 +656,7 @@ function generateBusinessesListPanel(responseJson, businessesDistanceArray) {
                 <div class="businessDistanceContainer">Distance: ${businessesDistanceArray[j]} miles</div>         
             </div>`);
     }
+    $('#loadingIndicatorContainer').css("display", "none");
     $('#businessesListPanelContainer').removeClass("hidden");
 }
 
