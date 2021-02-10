@@ -521,7 +521,7 @@ function changeSliderImages(slide) {
     if (imageChangeCounter === 21) {
         imageChangeCounter = 0;
     } else {
-        ++imageChangeCounter;
+        imageChangeCounter++;
     }
 }
 
