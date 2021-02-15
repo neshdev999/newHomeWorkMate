@@ -47,7 +47,7 @@ function generateHomePageHeader() {
 }
 
 function headerContentTemplate() {
-    return `<div class="mainHeaderContainer"><h1>New Home Workmate</h1><h2>Are you a new home buyer and want to find out nearby home services available at your fingertips? No worry! You are at the right place!!!</h2><div>`;
+    return `<div class="mainHeaderContainer"><h1>New Home Workmate</h1><h2>Discover a nearby home upgrade/repair specialist for your home improvements</h2><div>`;
 }
 
 /* home page main section */
@@ -68,7 +68,8 @@ function generateSliderTemplate() {
 
 function searchInputControlBox() {
     return `
-    <div>
+    <div class="mainHomePageFormContainer">
+        <div>Give us a few details and we’ll match you with the right pro.</div>
         <div class="inputControlFormContainer">
             <form id="homePageForm">
                 <input id="zip" name="zip" type="text" pattern="[0-9]*" placeholder="Enter your zip code">
@@ -93,7 +94,28 @@ function generateServiceMenuPageHeader() {
 }
 
 function serviceMenuHeaderContentTemplate() {
-    return `<div id="serviceMenuPageHeader"><h2>Services<h2><div>`;
+    return `
+    <div>
+        <div class="commonMenuNavigationContainer">
+            <div class="commonMenuNavigationItems commonMenuHeaderIcon" > 
+                <img src="./images/icons/menu/menu_new.png" id="commonMenuNavigationTriggerButton">
+                <div class="commonMenuNavigationItems commonMenuHolder hidden" id="commonMenuItemsHolder">
+                <div class="commonMenuContainer">
+                    <div class="commonMenuItem serviceHomeIconContainer"><img src="./images/icons/menu/modified/homeIcon.gif" id="serviceHomeImageButton"></div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div id="serviceMenuPageHeader">
+            <h2>Services<h2>
+        <div>
+
+    </div>`;
+
+    // <div class="commonMenuItem"><img src="./images/icons/menu/modified/businessListIcon.gif"></div>
+    // <div class="commonMenuItem"><img src="./images/icons/menu/modified/detailedBusinessInfoIcon.gif"></div>
+    // <div class="commonMenuItem"><img src="./images/icons/menu/modified/servicesIcon.gif"></div>
+    //<button class="commonMenuContainerButton"><img src="./images/icons/menu/menu.png"></button>
 }
 
 function generateServiceMenuPageMainContent() {
@@ -200,7 +222,7 @@ function generateServiceTileImagesTemplate() {
 }
 
 function serviceMenuNavigationInputControlBox() {
-    return `<div class="serviceMenuPageNavigationFormContainer"><form id="serviceMenuPageNavigationForm"><input type="submit" value="Go Back to Home Page" class="serviceMenuPageButton"/></form></div>`;
+    return `<div class="serviceMenuPageNavigationFormContainer"><form id="serviceMenuPageNavigationForm"><input type="submit" value="" class="serviceMenuPageButton" id="serviceMenuNavigationSubmitButton"/></form></div>`;
 }
 
 /*----Businesses List Page Template----*/
@@ -330,12 +352,25 @@ function businessesListPageHeaderContentTemplate(imageTileID, store) {
             console.log('');
     }
     return `
-    <div class="businessesListHeaderContainer">
-        <div class="businessesListHeader">
-            <h2>${header}</h2>
+    <div>
+        <div class="commonMenuNavigationContainer">
+            <div class="commonMenuNavigationItems commonMenuHeaderIcon" > 
+                <img src="./images/icons/menu/menu_new.png" id="commonMenuNavigationTriggerButton">
+                <div class="commonMenuNavigationItems commonMenuHolder hidden" id="commonMenuItemsHolder">
+                    <div class="commonMenuContainer">
+                        <div class="commonMenuItem serviceHomeIconContainer"><img src="./images/icons/menu/modified/homeIcon.gif" id="businessesListHomeImageButton"></div>
+                        <div class="commonMenuItem serviceServicesMenuIconContainer"><img src="./images/icons/menu/modified/servicesIcon.gif" id="businessesListServicesImageButton"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="businessesListHeaderImageHolder">
-            <img src="${imageSrc}" alt="${imageAltText}">
+        <div class="businessesListHeaderContainer">
+            <div class="businessesListHeader">
+                <h2>${header}</h2>
+            </div>
+            <div class="businessesListHeaderImageHolder">
+                <img src="${imageSrc}" alt="${imageAltText}">
+            </div>
         </div>
     </div>`;
 }
@@ -367,12 +402,12 @@ function businessesListNavigationInputControlBox() {
         <div id="businessesListNavigationFormContainer">
             <div class="businessListNavigationFormItem">
                 <form id="businessListNavigationFormReturnServicesMenu">
-                    <input type="submit" value="Go Back to Services Menu" class="businessListNavigationButton">
+                    <input type="submit" value="" class="businessListNavigationButton" id="businessesListNavigationServSubmitButton">
                 </form>
             </div>
             <div class="businessListNavigationFormItem">
                 <form id="businessListNavigationFormReturnHomePageMenu">
-                    <input type="submit" value="Go Back to Home Page" class="businessListNavigationButton">
+                    <input type="submit" value="" class="businessListNavigationButton" id="businessesListNavigationHomeSubmitButton">
                 </form>
             </div>
         </div>
@@ -406,8 +441,21 @@ function detailedBusinessInfoPageMapContentTemplate() {
 
 function detailedBusinessInfoPageHeaderContentTemplate() {
     return `
-    <div class="headerContainer">
-    <div class="headerItem">Detailed Info Page : ${currentDetailedBusinessInfoPageHeader}</div>
+    <div>
+        <div class="commonMenuNavigationContainer">
+            <div class="commonMenuNavigationItems commonMenuHeaderIcon" > 
+                <img src="./images/icons/menu/menu_new.png" id="commonMenuNavigationTriggerButton">
+                <div class="commonMenuNavigationItems commonMenuHolder hidden" id="commonMenuItemsHolder">
+                    <div class="commonMenuContainer">
+                        <div class="commonMenuItem serviceHomeIconContainer"><img src="./images/icons/menu/modified/homeIcon.gif" id="detailedBusinessInfoHomeImageButton"></div>
+                        <div class="commonMenuItem serviceServicesMenuIconContainer"><img src="./images/icons/menu/modified/detailedBusinessInfoIcon.gif" id="detailedBusinessInfoBusinessesListImageButton"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="headerContainer">
+            <div class="headerItem">Business : ${currentDetailedBusinessInfoPageHeader}</div>
+        </div>
     </div>`;
 }
 
@@ -452,34 +500,37 @@ function generateBusinessInfoPageContentTemplate(selectedBusinessInfoPageStore) 
         <div class="addressUlListContainer">
             <ul class="addressUlList">
                 <li>${passStreet}</li>
-                <li>${passCity}</li>
-                <li>${passStateCode}</li>
-                <li>${passPostalCode}</li>
+                <li>${passCity}&nbsp;${passStateCode}&nbsp;${passPostalCode}</li>       
                 <li>${passCountryCode}</li>
             </ul>
         </div>
     </div>
     <div class="morInfoContainer">
-        <div class="moreInfoItem"><a href="${srcDetailsAddress}" target=”_blank”>More Details</a></div>
+        <div class="moreInfoItem"><button type="button" onclick="window.open('${srcDetailsAddress}','_blank')">More Details</button></div>
     </div>
     </div>`;
+
+    // <li>${passStateCode}</li>
+    // <li>${passPostalCode}</li>
 }
 
 function businessInfoPageNavigationInputControlBox() {
 
     return `
+    <div>
         <div id="businessInfoPageNavigationFormContainer">
             <div class="businessInfoPageNavigationFormItem">
                 <form id="businessInfoPageNavigationFormReturnListsMenu">
-                    <input type="submit" value="Go Back to Businesses List" class="businessInfoPageNavigationButton">
+                    <input type="submit" value="" class="businessInfoPageNavigationButton" id="detailedBusinessInfoNavigationBussSubmitButton">
                 </form>
             </div>
             <div class="businessInfoPageNavigationFormItem">
                 <form id="businessInfoPageNavigationFormReturnHomePageMenu">
-                    <input type="submit" value="Go Back to Home Page" class="businessInfoPageNavigationButton">
+                    <input type="submit" value="" class="businessInfoPageNavigationButton" id="detailedBusinessInfoNavigationHomeSubmitButton">
                 </form>
             </div>
-        </div>`;
+        </div>
+    </div>`;
 }
 
 /*********** Map Generation Functions ***********/
@@ -782,10 +833,24 @@ function handleServiceMenuPageNavigationFormSubmission() {
         event.preventDefault();
         provideRoute(routingParamsHolder.currentPage[0]);
     });
+    $('#serviceHomeImageButton').on('click', function(event) {
+        event.preventDefault();
+        provideRoute(routingParamsHolder.currentPage[0]);
+    });
+}
+
+function handleServiceMenuPageNavigationTriggerButtonClick() {
+    $('#commonMenuNavigationTriggerButton').on('click', function() {
+        if ($("#commonMenuItemsHolder").hasClass("hidden")) {
+            $('#commonMenuItemsHolder').removeClass('hidden');
+        } else {
+            $('#commonMenuItemsHolder').addClass('hidden');
+        }
+    });
 }
 
 function handleImageTileClick() {
-    $('img').on('click', function() {
+    $('img.serviceMenuTileImage').on('click', function() {
         var receivedImageID = $(this).attr('id');
         receivedImageTileID = receivedImageID;
         let receivedMapQuestBusinessCatgo = findMapQuestBusinessCategory(receivedImageTileID);
@@ -804,6 +869,14 @@ function handleBusinessesListPageNavigationFormSubmission() {
     $('#businessListNavigationFormReturnHomePageMenu').submit(function(event) {
         event.preventDefault();
         provideRoute(routingParamsHolder.currentPage[0]);
+    });
+    $('#businessesListHomeImageButton').on('click', function(event) {
+        event.preventDefault();
+        provideRoute(routingParamsHolder.currentPage[0]);
+    });
+    $('#businessesListServicesImageButton').on('click', function(event) {
+        event.preventDefault();
+        provideRoute(routingParamsHolder.currentPage[1]);
     });
 }
 
@@ -828,6 +901,16 @@ function handleBusinessInfoPageNavigationFormSubmission() {
     $('#businessInfoPageNavigationFormReturnHomePageMenu').submit(function(event) {
         event.preventDefault();
         provideRoute(routingParamsHolder.currentPage[0]);
+    });
+    $('#detailedBusinessInfoHomeImageButton').on('click', function(event) {
+        event.preventDefault();
+        provideRoute(routingParamsHolder.currentPage[0]);
+    });
+    $('#detailedBusinessInfoBusinessesListImageButton').on('click', function(event) {
+        event.preventDefault();
+        let receivedMapQuestBusinessCatgo = findMapQuestBusinessCategory(receivedImageTileID);
+        getBusinessesListFromMapQuestApi(lat, lng, receivedMapQuestBusinessCatgo);
+        provideRoute(routingParamsHolder.currentPage[2]);
     });
 }
 
@@ -855,18 +938,21 @@ function provideRoute(checkFlag) {
         clearInterval(intervalCycleHolder);
         serviceMenuPage();
         handleServiceMenuPageNavigationFormSubmission();
+        handleServiceMenuPageNavigationTriggerButtonClick();
         handleImageTileClick();
     } else if (checkFlag === 'businessesListPage') {
         /* Clear Home Page banner interval  */
         clearInterval(intervalCycleHolder);
         businessesListPage(receivedImageTileID, businessesListStore);
         handleBusinessesListPageNavigationFormSubmission();
+        handleServiceMenuPageNavigationTriggerButtonClick();
         handleDetailedBusinessInfoPageBNameClick();
     } else if (checkFlag === 'detailedSingleBusinessInfoPage') {
         /* Clear Home Page banner interval  */
         clearInterval(intervalCycleHolder);
         detailedBusinessInfoPage();
         handleBusinessInfoPageNavigationFormSubmission();
+        handleServiceMenuPageNavigationTriggerButtonClick();
     }
 }
 

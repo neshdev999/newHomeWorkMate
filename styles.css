@@ -11,6 +11,20 @@ html {
 }
 
 
+/* Home Page */
+
+.mainHomePageFormContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2%;
+    background-color: #137DBD;
+    padding: 1%;
+    color: azure;
+}
+
+
 /* Main Image Slider */
 
 #sliderContainer {
@@ -19,27 +33,110 @@ html {
 
 .inputControlFormContainer {
     text-align: center;
-    margin: 2%;
-    padding: 2%;
+    margin: 1%;
+    padding: 1%;
 }
 
 
 /* Service Menu Page */
 
+.commonMenuNavigationContainer {
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 2%;
+    /* background-color: rgb(227, 245, 252); */
+    /* overflow: auto; */
+}
+
+.commonMenuNavigationItems {
+    flex: 1;
+}
+
+.commonMenuContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 5%;
+    margin-bottom: 2%;
+}
+
+.commonMenuItem {
+    flex: 1;
+}
+
+.commonMenuItem>img {
+    width: 100%;
+}
+
+.commonMenuHeaderIcon {
+    margin: 2%;
+    /* position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    align-self: flex-start; */
+}
+
+.commonMenuHeaderIcon>img {
+    padding: 10px;
+}
+
+.commonMenuHeaderIcon:hover {
+    /* background-color: dimgray; */
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 1%;
+    margin: 2%;
+    border: 2px solid darkmagenta;
+    border-radius: 2px;
+}
+
+.commonMenuContainerButton {
+    /* background-color: aliceblue;
+    background-color: rgba(240, 248, 255, 0.9); */
+    cursor: pointer;
+    border: none;
+    color: white;
+    text-align: center;
+    border: 1px solid blue;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.serviceHomeIconContainer {
+    background-color: #cac9f7;
+    margin: 2%;
+    padding: 2%;
+}
+
+.serviceServicesMenuIconContainer {
+    background-color: #cac9f7;
+    margin: 2%;
+    padding: 2%;
+}
+
 #serviceMenuPageHeader {
+    margin: 5%;
     text-align: center;
 }
 
 .imagteTileParentWrapper {
     text-align: center;
+    margin: 10%;
 }
 
 .imageTilesWrapper {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-left: 6%;
-    margin-right: 6%;
+    margin-left: 2%;
+    margin-right: 2%;
+    justify-content: space-between;
 }
 
 .singleImageTileNameContainer {
@@ -94,6 +191,15 @@ html {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
     font-weight: semibold;
+}
+
+#serviceMenuNavigationSubmitButton {
+    background: url('./images/icons/menu/modified/homeIcon.gif');
+    border: none;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-color: lightblue;
+    border: 2px solid darkorchid;
 }
 
 
@@ -197,6 +303,24 @@ html {
     text-align: center;
 }
 
+#businessesListNavigationServSubmitButton {
+    background: url('./images/icons/menu/modified/servicesIcon.gif');
+    border: none;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-color: lightblue;
+    border: 2px solid darkorchid;
+}
+
+#businessesListNavigationHomeSubmitButton {
+    background: url('./images/icons/menu/modified/homeIcon.gif');
+    border: none;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-color: lightblue;
+    border: 2px solid darkorchid;
+}
+
 
 /* Detailed Business Info Page */
 
@@ -215,8 +339,10 @@ html {
 .businessInfoPageNavigationButton {
     background-color: #caeccb;
     border: none;
-    margin: 1%;
-    padding: 20px;
+    /* margin: 1%;
+    padding: 20px; */
+    margin: 4px 2px;
+    padding: 16px 32px;
     text-decoration: none;
     cursor: pointer;
     color: darkorchid;
@@ -234,6 +360,8 @@ html {
     justify-content: center;
     align-items: center;
     margin: 2%;
+    margin-left: 10%;
+    margin-right: 10%;
     background-color: lightblue;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 20px;
@@ -252,6 +380,8 @@ html {
     background-color: cornsilk;
     margin-left: 2%;
     margin: 2%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .addressUlListContainer {
@@ -298,6 +428,8 @@ html {
 .mapContainer {
     text-align: center;
     margin: 2%;
+    margin-left: 10%;
+    margin-right: 10%;
     padding: 1%;
 }
 
@@ -307,6 +439,8 @@ html {
     flex-direction: column;
     justify-content: center;
     margin: 2%;
+    margin-left: 10%;
+    margin-right: 10%;
     background-color: lightsalmon;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 20px;
@@ -376,4 +510,28 @@ html {
     to {
         transform: rotate(360deg);
     }
+}
+
+#detailedBusinessInfoNavigationBussSubmitButton {
+    background: url('./images/icons/menu/modified/detailedBusinessInfoIcon.gif');
+    border: none;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-color: lightblue;
+    border: 2px solid darkorchid;
+}
+
+
+/* #businessInfoPageNavigationFormReturnListsMenu {
+    margin: 2%;
+    padding: 50px;
+} */
+
+#detailedBusinessInfoNavigationHomeSubmitButton {
+    background: url('./images/icons/menu/modified/homeIcon.gif');
+    border: none;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-color: lightblue;
+    border: 2px solid darkorchid;
 }
