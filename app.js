@@ -47,7 +47,20 @@ function generateHomePageHeader() {
 }
 
 function headerContentTemplate() {
-    return `<div class="mainHeaderContainer"><h1>New Home Workmate</h1><h2>Discover a nearby home upgrade/repair specialist for your home improvements</h2><div>`;
+    return `
+    <div>
+        <div class="mainHeaderImageIconContainer">
+            <div class="mainHeaderImageIconItem">
+                <img src="./images/icons/android-chrome-192x192.png" alt="home with repair tools">
+            </div>
+        </div>
+        <div class="mainHeaderContainer">
+            <div class="topHeaderContentContainer">
+            <h1>New Home Workmate</h1>            
+            <h2 class="topHeaderSecondContent">Discover a nearby home upgrade/repair specialist for your home improvements</h2>
+            </div>
+        <div>
+    </div>`;
 }
 
 /* home page main section */
@@ -63,7 +76,7 @@ function homePageMainContentTemplate() {
 }
 
 function generateSliderTemplate() {
-    return `<div id="sliderContainer"><img></div>`;
+    return `<div id="sliderParentContainer"><div id="sliderContainer"><img></div></div>`;
 }
 
 function searchInputControlBox() {
@@ -72,8 +85,8 @@ function searchInputControlBox() {
         <div>Give us a few details and we’ll match you with the right pro.</div>
         <div class="inputControlFormContainer">
             <form id="homePageForm">
-                <input id="zip" name="zip" type="text" pattern="[0-9]*" placeholder="Enter your zip code">
-                <input type="submit" value="Submit">
+                <input id="zip" name="zip" type="text" pattern="[0-9]*" placeholder=" ZIP Code">
+                <input type="submit" value="Submit" id="zipSubmitButton">
             </form>
         </div>
         <div id="serverErrorReportContainer">
@@ -97,19 +110,18 @@ function serviceMenuHeaderContentTemplate() {
     return `
     <div>
         <div class="commonMenuNavigationContainer">
-            <div class="commonMenuNavigationItems commonMenuHeaderIcon" > 
+            <div class="commonMenuNavigationItems commonMenuHeaderIcon"> 
                 <img src="./images/icons/menu/menu_new.png" id="commonMenuNavigationTriggerButton">
-                <div class="commonMenuNavigationItems commonMenuHolder hidden" id="commonMenuItemsHolder">
-                <div class="commonMenuContainer">
-                    <div class="commonMenuItem serviceHomeIconContainer"><img src="./images/icons/menu/modified/homeIcon.gif" id="serviceHomeImageButton"></div>
+                <div class="commonMenuHolder hidden" id="commonMenuItemsHolder">
+                    <div class="commonMenuContainer">
+                        <div class="commonMenuItem serviceHomeIconContainer"><img src="./images/icons/menu/modified/homeIcon.gif" id="serviceHomeImageButton"></div>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
         <div id="serviceMenuPageHeader">
             <h2>Services<h2>
         <div>
-
     </div>`;
 
     // <div class="commonMenuItem"><img src="./images/icons/menu/modified/businessListIcon.gif"></div>
@@ -356,7 +368,7 @@ function businessesListPageHeaderContentTemplate(imageTileID, store) {
         <div class="commonMenuNavigationContainer">
             <div class="commonMenuNavigationItems commonMenuHeaderIcon" > 
                 <img src="./images/icons/menu/menu_new.png" id="commonMenuNavigationTriggerButton">
-                <div class="commonMenuNavigationItems commonMenuHolder hidden" id="commonMenuItemsHolder">
+                <div class="commonMenuHolder hidden" id="commonMenuItemsHolder">
                     <div class="commonMenuContainer">
                         <div class="commonMenuItem serviceHomeIconContainer"><img src="./images/icons/menu/modified/homeIcon.gif" id="businessesListHomeImageButton"></div>
                         <div class="commonMenuItem serviceServicesMenuIconContainer"><img src="./images/icons/menu/modified/servicesIcon.gif" id="businessesListServicesImageButton"></div>
@@ -445,7 +457,7 @@ function detailedBusinessInfoPageHeaderContentTemplate() {
         <div class="commonMenuNavigationContainer">
             <div class="commonMenuNavigationItems commonMenuHeaderIcon" > 
                 <img src="./images/icons/menu/menu_new.png" id="commonMenuNavigationTriggerButton">
-                <div class="commonMenuNavigationItems commonMenuHolder hidden" id="commonMenuItemsHolder">
+                <div class="commonMenuHolder hidden" id="commonMenuItemsHolder">
                     <div class="commonMenuContainer">
                         <div class="commonMenuItem serviceHomeIconContainer"><img src="./images/icons/menu/modified/homeIcon.gif" id="detailedBusinessInfoHomeImageButton"></div>
                         <div class="commonMenuItem serviceServicesMenuIconContainer"><img src="./images/icons/menu/modified/detailedBusinessInfoIcon.gif" id="detailedBusinessInfoBusinessesListImageButton"></div>
@@ -530,6 +542,26 @@ function businessInfoPageNavigationInputControlBox() {
                 </form>
             </div>
         </div>
+    </div>`;
+}
+
+/* Footer Template */
+
+function footerGen() {
+    generatefooter();
+    footerContent();
+}
+
+function generatefooter() {
+    const footerBaseContentGenerator = footerContentGenTemplate();
+    $('.footerWorkMateApp').html(footerBaseContentGenerator);
+}
+
+function footerContentGenTemplate() {
+    return `
+    <div>
+        <div class="footerContainer">Copyright &copy; Workmate Team </div>
+        <div class="footerContainer" id="copyRightYear"></div>
     </div>`;
 }
 
@@ -806,6 +838,11 @@ function gatherInfoForDetailedBusinessInfoPage(responseJson) {
 }
 
 
+function footerContent() {
+    $('#copyRightYear').text(getCopyRightCurrentYear());
+}
+
+
 /********** EVENT HANDLER FUNCTIONS **********/
 
 /* Home Page */
@@ -926,6 +963,14 @@ function validateForRealZipCode(value, zipCodesStore) {
     return check;
 }
 
+/* Copyright Year */
+
+function getCopyRightCurrentYear() {
+    var today = new Date();
+    var year = today.getFullYear();
+    return year;
+}
+
 /********** Routing Function **********/
 
 function provideRoute(checkFlag) {
@@ -933,6 +978,7 @@ function provideRoute(checkFlag) {
         homePage();
         sliderRender();
         handleHomePageFormSubmission();
+        footerGen();
     } else if (checkFlag === 'servicesMenuPage') {
         /* Clear Home Page banner interval  */
         clearInterval(intervalCycleHolder);
@@ -940,6 +986,7 @@ function provideRoute(checkFlag) {
         handleServiceMenuPageNavigationFormSubmission();
         handleServiceMenuPageNavigationTriggerButtonClick();
         handleImageTileClick();
+        footerGen();
     } else if (checkFlag === 'businessesListPage') {
         /* Clear Home Page banner interval  */
         clearInterval(intervalCycleHolder);
@@ -947,12 +994,14 @@ function provideRoute(checkFlag) {
         handleBusinessesListPageNavigationFormSubmission();
         handleServiceMenuPageNavigationTriggerButtonClick();
         handleDetailedBusinessInfoPageBNameClick();
+        footerGen();
     } else if (checkFlag === 'detailedSingleBusinessInfoPage') {
         /* Clear Home Page banner interval  */
         clearInterval(intervalCycleHolder);
         detailedBusinessInfoPage();
         handleBusinessInfoPageNavigationFormSubmission();
         handleServiceMenuPageNavigationTriggerButtonClick();
+        footerGen();
     }
 }
 
