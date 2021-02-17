@@ -70,6 +70,8 @@ body {
     color: #BB653C; */
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
+    background-image: url('./images/apptools/tools.png');
+    background-repeat: repeat;
 }
 
 .mainHeaderContainer {
@@ -101,6 +103,18 @@ h2 {
     font-size: 24px;
 }
 
+.randomBorderGenSector {
+    background-image: url('./images/apptools/app_border-black.png');
+    background-repeat: repeat;
+    padding: 60px;
+}
+
+.randomBorderGenSecondSector {
+    background-image: url('./images/apptools/app_border-second-black.png');
+    background-repeat: repeat;
+    padding: 60px;
+}
+
 
 /* Desktop Screen */
 
@@ -113,7 +127,21 @@ h2 {
         height: 120px;
     }
     .mainHomePageFormContainer {
-        padding: 30px;
+        padding: 80px;
+        background-repeat: no-repeat;
+        background-position: center;
+        /* border: 10px solid black;
+        border-image: url('./images/apptools/app_border-removebg-preview\(1\).png')  stretch; */
+    }
+    .randomBorderGenSector {
+        background-image: url('./images/apptools/app_border-black.png');
+        background-repeat: repeat;
+        padding: 60px;
+    }
+    .randomBorderGenSecondSector {
+        background-image: url('./images/apptools/app_border-second-black.png');
+        background-repeat: repeat;
+        padding: 60px;
     }
     h1 {
         font-size: 40px;
@@ -158,9 +186,6 @@ h2 {
 }
 
 #sliderContainer {
-    /* text-align: center;
-    background-color: #FAFAFA;
-    padding: 1%; */
     flex: 1;
 }
 
@@ -178,7 +203,7 @@ h2 {
 
 #homePageForm {
     background-color: lightcoral;
-    background-color: rgba(75, 75, 75, 0.8);
+    background-color: rgba(12, 12, 12, 0.8);
     padding: 10px;
     border-radius: 3px;
 }
@@ -188,12 +213,21 @@ h2 {
     margin-bottom: 30px;
 }
 
+.mainHomeFormHeading {
+    background-color: rgba(75, 75, 75, 0.9);
+    background-color: rgba(12, 12, 12, 0.8);
+    padding: 10px;
+}
+
 
 /* Desktop Screen */
 
 @media screen and (min-width: 992px) {
     #sliderParentContainer {
         padding: 20px;
+    }
+    #sliderContainer {
+        width: 900px;
     }
     #homePageForm input {
         margin: 10px;
@@ -207,15 +241,27 @@ h2 {
 
 /* Service Menu Page */
 
+.servicesTopContainer {
+    background-color: #79e3b6;
+    background-color: rgba(255, 154, 8, 0.5);
+    background-color: rgba(251, 145, 119, 0.3);
+    background-color: #fa3455;
+    background-color: #ee4b66;
+    padding: 20px;
+}
+
 .commonMenuNavigationContainer {
     position: fixed;
     top: 0;
-    z-index: 99;
+    /* z-index: 99; */
+    z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 0px;
+    /* margin: 0px; */
+    margin: 2%;
+    /* background-color: rgba(0, 0, 0, 0.2); */
     /* background-color: rgb(227, 245, 252); */
     /* overflow: auto; */
 }
@@ -244,7 +290,7 @@ h2 {
 }
 
 .commonMenuHeaderIcon {
-    margin: 0px;
+    margin: 5px;
 }
 
 .commonMenuHeaderIcon>img {
@@ -254,9 +300,10 @@ h2 {
 .commonMenuHeaderIcon:hover {
     /* background-color: dimgray; */
     background-color: rgba(0, 0, 0, 0.1);
-    padding: 1%;
-    margin: 2%;
+    /* padding: 1%;
+    margin: 2%; */
     border: 2px solid darkmagenta;
+    border: 2px solid rgb(72, 116, 206);
     border-radius: 2px;
 }
 
@@ -272,28 +319,34 @@ h2 {
 }
 
 .serviceHomeIconContainer {
-    background-color: #cac9f7;
-    background-color: rgba(202, 201, 247, 0.3);
+    /* background-color: #cac9f7;
+    background-color: rgba(202, 201, 247, 0.9); */
+    background-color: rgba(146, 200, 232, 0.5);
     margin: 0px;
     padding: 0px;
 }
 
 .serviceServicesMenuIconContainer {
     background-color: #cac9f7;
-    background-color: rgba(202, 201, 247, 0.3);
+    background-color: rgba(202, 201, 247, 0.9);
     margin: 2%;
     padding: 2%;
 }
 
 #serviceMenuPageHeader {
     /* margin: 5%; */
-    margin-left: 16%;
-    margin-right: 16%;
+    margin-left: 35%;
+    margin-right: 35%;
     text-align: center;
     background-color: lightblue;
+    background-color: rgba(255, 154, 8, 0.5);
+    background-color: rgba(251, 145, 119, 0.3);
+    background-color: #fa3455;
+    background-color: #ee4b66;
+    /* background-color: rgba(236,73,104,0.8); */
     padding-top: 2px;
     padding-bottom: 2px;
-    margin-top: 5px;
+    margin-top: 0px;
 }
 
 .imagteTileParentWrapper {
@@ -308,6 +361,9 @@ h2 {
     margin-left: 2%;
     margin-right: 2%;
     justify-content: space-between;
+    background-color: rgba(49, 49, 49, 0.1);
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 .singleImageTileNameContainer {
@@ -351,6 +407,10 @@ h2 {
     margin: 1%;
 }
 
+#serviceMenuPageNavigationForm {
+    background-color: #fafafa;
+}
+
 .serviceMenuPageButton {
     background-color: #caeccb;
     border: none;
@@ -381,6 +441,8 @@ h2 {
     background-size: 100% 100%;
     background-color: lightblue;
     border: 2px solid darkorchid;
+    border: 1px solid #4b75cc;
+    border-radius: 5px;
 }
 
 
@@ -390,12 +452,18 @@ h2 {
     #serviceMenuPageHeader {
         margin-left: 20%;
         margin-right: 20%;
-        margin-top: 10px;
+        margin-top: 0px;
         padding-top: 5px;
         padding-bottom: 5px;
     }
     .imageTilesWrapper {
         flex-direction: row;
+        padding-left: 15%;
+        padding-right: 15%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-left: 0px;
+        margin-right: 0px;
     }
     .singleImageTileNameContainer {
         flex: 0 0 120px;
@@ -404,18 +472,21 @@ h2 {
     .commonMenuNavigationContainer {
         position: fixed;
         top: 0;
-        z-index: 99;
+        /* z-index: 99; */
+        z-index: 1000;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         margin: 2%;
+        /* margin: 0px; */
         /* background-color: rgb(227, 245, 252); */
         /* overflow: auto; */
     }
     .serviceHomeIconContainer {
-        background-color: #cac9f7;
-        background-color: rgba(202, 201, 247, 0.3);
+        /* background-color: #cac9f7;
+        background-color: rgba(202, 201, 247, 0.9); */
+        background-color: rgba(146, 200, 232, 0.5);
         margin: 2%;
         padding: 2%;
     }
@@ -430,11 +501,22 @@ h2 {
         margin-bottom: 2%;
     }
     .commonMenuHeaderIcon {
-        margin: 2%;
+        /* margin: 2%; */
+        margin: 20px;
         /* position: sticky;
         position: -webkit-sticky;
         top: 0;
         align-self: flex-start; */
+    }
+    .imagteTileParentWrapper {
+        text-align: center;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .serviceMenuPageNavigationFormContainer {
+        margin: 0px;
     }
 }
 
@@ -453,12 +535,41 @@ h2 {
 
 /* Businesses List Navigation */
 
+.gaper {
+    padding: 5px;
+    /* background-color: saddlebrown; */
+}
+
+.businessesListStyleContainer {
+    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 232, 207);
+    background-color: rgba(121, 166, 212, 0.3);
+    background-color: rgba(79, 102, 116, 0.9);
+    /* background-color: rgba(251, 145, 119, 0.3); */
+    padding: 30px;
+    /* margin-bottom: 5px; */
+    padding-bottom: 60px;
+}
+
+.businessesListHeaderContainer {
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+#businessesListPanelContainer {
+    background-color: rgba(255, 154, 8, 0.5);
+    background-color: #eaeaea;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
 #businessesListNavigationFormContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 2%;
+    /* margin: 2%; */
+    background-color: #fafafb;
 }
 
 .businessListNavigationFormItem {
@@ -483,10 +594,23 @@ h2 {
 
 .businessesListHeader {
     text-align: center;
+    /* background-color: rgba(251, 145, 119, 0.3); */
 }
 
 .businessesListHeaderImageHolder {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.businessesListHeaderImageItem {
+    flex: 1;
+}
+
+.businessesListHeaderImageItem>img {
+    width: 100%;
 }
 
 .businessItemContainer {
@@ -502,6 +626,10 @@ h2 {
     flex: 1;
     margin: 20px;
     padding: 10px;
+}
+
+.businessItemContainer>.businessNameContainer {
+    flex: 2;
 }
 
 .businessNameContainer {
@@ -531,6 +659,8 @@ h2 {
 
 .businessDistanceContainer {
     background-color: #79e3b6;
+    background-color: rgba(78, 60, 182, 0.2);
+    background-color: rgba(239, 162, 125);
     border-radius: 2px;
     border: 2px solid black;
 }
@@ -558,6 +688,8 @@ h2 {
     background-size: 100% 100%;
     background-color: lightblue;
     border: 2px solid darkorchid;
+    border: 1px solid #4b75cc;
+    border-radius: 5px;
 }
 
 #businessesListNavigationHomeSubmitButton {
@@ -567,17 +699,40 @@ h2 {
     background-size: 100% 100%;
     background-color: lightblue;
     border: 2px solid darkorchid;
+    border: 1px solid #4b75cc;
+    border-radius: 5px;
+}
+
+
+/* Desktop Screen */
+
+@media screen and (min-width: 992px) {
+    #businessesListPanelContainer {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .businessItemContainer>.businessNameContainer {
+        flex: 5;
+    }
 }
 
 
 /* Detailed Business Info Page */
+
+.detailedBusinessInfoPageListStyleContainer {
+    background-color: #add8e6;
+    background-color: #feded6;
+    background-color: #fa3455;
+    background-color: #ee4b66;
+}
 
 #businessInfoPageNavigationFormContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 2%;
+    background-color: #fafafb;
+    /* margin: 2%; */
 }
 
 .businessInfoPageNavigationFormItem {
@@ -607,10 +762,14 @@ h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 2%;
+    /* margin: 2%; */
+    padding: 30px;
     margin-left: 10%;
     margin-right: 10%;
-    background-color: lightblue;
+    /* background-color: lightblue; */
+    background-color: #feded6;
+    background-color: #fa3455;
+    background-color: #ee4b66;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 20px;
 }
@@ -620,14 +779,20 @@ h2 {
     padding: 1%;
 }
 
+.detailedInfoAddressStyles {
+    background-color: royalblue;
+    background-color: #eaeaea;
+}
+
 .addressContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: cornsilk;
-    margin-left: 2%;
-    margin: 2%;
+    background-color: #eaeaea;
+    /* margin-left: 2%; */
+    /* margin: 2%; */
     margin-left: 10%;
     margin-right: 10%;
 }
@@ -653,32 +818,42 @@ h2 {
     margin-left: 2%;
     margin-right: 2%;
     text-align: center;
-    background-color: burlywood;
+    /* background-color: burlywood; */
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 18px;
-    padding: 1%;
+    /* padding: 1%; */
+    padding: 20px;
     padding-left: 3%;
     padding-right: 3%;
     border-radius: 2px;
 }
 
-.mapsContainer {
+.mapStylesContainer {
+    background-color: rosybrown;
+    background-color: #eaeaea;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+/* .mapsContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .mapItems {
-    margin: 2%;
-    padding: 1%;
+    /* margin: 2%; */
+    /* padding: 1%; */
+    margin: 10px;
+    padding: 10px;
 }
 
 .mapContainer {
     text-align: center;
-    margin: 2%;
-    margin-left: 10%;
-    margin-right: 10%;
-    padding: 1%;
+    /* margin: 2%; */
+    margin-left: 2%;
+    margin-right: 2%;
+    /* padding: 1%; */
 }
 
 .morInfoContainer {
@@ -686,10 +861,11 @@ h2 {
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    margin: 2%;
+    /* margin: 2%; */
     margin-left: 10%;
     margin-right: 10%;
     background-color: lightsalmon;
+    background-color: #eaeaea;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 20px;
 }
@@ -697,6 +873,49 @@ h2 {
 .moreInfoItem {
     flex: 1;
     margin: 10px;
+}
+
+.moreDetailsLinkButton {
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid #e74c3c;
+    border-radius: 0.6em;
+    color: #e74c3c;
+    cursor: pointer;
+    display: flex;
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    margin: 20px;
+    padding: 1.2em 2.8em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+}
+
+.moreDetailsLinkButton:hover,
+.moreDetailsLinkButton:focus {
+    color: #fff;
+    outline: 0;
+}
+
+.moreDetailsStyled {
+    border-color: #3498db;
+    color: #fff;
+    box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+    transition: all 150ms ease-in-out;
+}
+
+.moreDetailsStyled:hover {
+    box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+    background-color: black;
+    color: white;
 }
 
 #serverErrorReportContainer {
@@ -721,6 +940,22 @@ h2 {
     padding: 1%;
     border-radius: 2px;
     text-align: center;
+}
+
+
+/* Desktop Screen */
+
+@media screen and (min-width: 992px) {
+    .headerContainer {
+        padding: 80px;
+    }
+    .mapContainer {
+        text-align: center;
+        /* margin: 2%; */
+        margin-left: 10%;
+        margin-right: 10%;
+        padding: 1%;
+    }
 }
 
 
@@ -763,6 +998,8 @@ h2 {
     background-size: 100% 100%;
     background-color: lightblue;
     border: 2px solid darkorchid;
+    border: 1px solid #4b75cc;
+    border-radius: 5px;
 }
 
 
@@ -778,6 +1015,8 @@ h2 {
     background-size: 100% 100%;
     background-color: lightblue;
     border: 2px solid darkorchid;
+    border: 1px solid #4b75cc;
+    border-radius: 5px;
 }
 
 

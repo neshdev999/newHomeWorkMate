@@ -81,8 +81,9 @@ function generateSliderTemplate() {
 
 function searchInputControlBox() {
     return `
+    <div class="randomBorderGenSector"></div>
     <div class="mainHomePageFormContainer">
-        <div>Give us a few details and we’ll match you with the right pro.</div>
+        <div class="mainHomeFormHeading">Give us a few details and we’ll match you with the right pro.</div>
         <div class="inputControlFormContainer">
             <form id="homePageForm">
                 <input id="zip" name="zip" type="text" pattern="[0-9]*" placeholder=" ZIP Code">
@@ -91,7 +92,8 @@ function searchInputControlBox() {
         </div>
         <div id="serverErrorReportContainer">
         </div>
-    </div>`
+    </div>
+    <div class="randomBorderGenSecondSector"></div>`;
 }
 
 /*----Service Menu Page Template----*/
@@ -108,7 +110,7 @@ function generateServiceMenuPageHeader() {
 
 function serviceMenuHeaderContentTemplate() {
     return `
-    <div>
+    <div class="servicesTopContainer">
         <div class="commonMenuNavigationContainer">
             <div class="commonMenuNavigationItems commonMenuHeaderIcon"> 
                 <img src="./images/icons/menu/menu_new.png" id="commonMenuNavigationTriggerButton">
@@ -364,7 +366,7 @@ function businessesListPageHeaderContentTemplate(imageTileID, store) {
             console.log('');
     }
     return `
-    <div>
+    <div class="businessesListStyleContainer">
         <div class="commonMenuNavigationContainer">
             <div class="commonMenuNavigationItems commonMenuHeaderIcon" > 
                 <img src="./images/icons/menu/menu_new.png" id="commonMenuNavigationTriggerButton">
@@ -381,10 +383,13 @@ function businessesListPageHeaderContentTemplate(imageTileID, store) {
                 <h2>${header}</h2>
             </div>
             <div class="businessesListHeaderImageHolder">
-                <img src="${imageSrc}" alt="${imageAltText}">
+                <div class="businessesListHeaderImageItem">
+                    <img src="${imageSrc}" alt="${imageAltText}">
+                </div>
             </div>
         </div>
-    </div>`;
+    </div>
+    <div class="gaper"></div>`;
 }
 
 function generateBusinessesListPageMainContent() {
@@ -409,6 +414,7 @@ function generatebusinessesListContentTemplate() {
 
 function businessesListNavigationInputControlBox() {
     return `
+    <div class="gaper"></div>
     <div>
         <div id="distanceErrorContainer"></div>
         <div id="businessesListNavigationFormContainer">
@@ -446,14 +452,18 @@ function generateDetailedBusinessInfoPageMapContent() {
 
 function detailedBusinessInfoPageMapContentTemplate() {
     return `
+    <div class="gaper"></div>
+    <div class="mapStylesContainer">
     <div class="mapContainer">
         <div id="map" style="width: 100%; height: 530px;"></div>
-    </div>`
+    </div>
+    </div>
+    <div class="gaper"></div>`
 }
 
 function detailedBusinessInfoPageHeaderContentTemplate() {
     return `
-    <div>
+    <div class="detailedBusinessInfoPageListStyleContainer">
         <div class="commonMenuNavigationContainer">
             <div class="commonMenuNavigationItems commonMenuHeaderIcon" > 
                 <img src="./images/icons/menu/menu_new.png" id="commonMenuNavigationTriggerButton">
@@ -506,7 +516,7 @@ function generateBusinessInfoPageContentTemplate(selectedBusinessInfoPageStore) 
     generateMapQuestMapTile(constructDestinationAddress, postCode);
 
     return `
-    <div>
+    <div class="detailedInfoAddressStyles">
     <div class="addressContainer">
         <div class="addressHeader">ADDRESS</div>
         <div class="addressUlListContainer">
@@ -518,9 +528,10 @@ function generateBusinessInfoPageContentTemplate(selectedBusinessInfoPageStore) 
         </div>
     </div>
     <div class="morInfoContainer">
-        <div class="moreInfoItem"><button type="button" onclick="window.open('${srcDetailsAddress}','_blank')">More Details</button></div>
+        <div class="moreInfoItem"><button type="button" onclick="window.open('${srcDetailsAddress}','_blank')" class="moreDetailsLinkButton moreDetailsStyled">More Details</button></div>
     </div>
-    </div>`;
+    </div>
+    <div class="gaper"></div>`;
 
     // <li>${passStateCode}</li>
     // <li>${passPostalCode}</li>
@@ -704,7 +715,8 @@ function findMapQuestBusinessCategory(imageID) {
             mapQuestBusinessCategory = '179939';
             break;
         case 'airDuctServicesTile':
-            mapQuestBusinessCategory = '73490202';
+            // mapQuestBusinessCategory = '73490202';
+            mapQuestBusinessCategory = '171102';
             break;
         case 'poolServicesTile':
             mapQuestBusinessCategory = '179985';
@@ -728,17 +740,29 @@ function getMiles(valInMeters) {
 
 function generateBusinessesListPanel(responseJson, businessesDistanceArray) {
     let businessesNamesArray = [];
-    for (let i = 0; i < responseJson.results.length; i++) {
-        businessesNamesArray.push(responseJson.results[i].name);
-    }
+    let verifyLength = responseJson.results.length;
 
-    for (let j = 0; j < responseJson.results.length; j++) {
+    if (verifyLength === 0) {
         $('#businessesListPanelContainer').append(`
             <div class="businessItemContainer">         
-                <div class="businessNameContainer">${businessesNamesArray[j]}</div>
-                <div class="businessDistanceContainer">Distance: ${businessesDistanceArray[j]} miles</div>         
+                <div>
+                    <p>No relevant business available in this area.😫😫😫</p>                
+                </div>
             </div>`);
+    } else {
+        for (let i = 0; i < responseJson.results.length; i++) {
+            businessesNamesArray.push(responseJson.results[i].name);
+        }
+
+        for (let j = 0; j < responseJson.results.length; j++) {
+            $('#businessesListPanelContainer').append(`
+                <div class="businessItemContainer">         
+                    <div class="businessNameContainer">${businessesNamesArray[j]}</div>
+                    <div class="businessDistanceContainer">Distance: ${businessesDistanceArray[j]} miles</div>         
+                </div>`);
+        }
     }
+
     $('#loadingIndicatorContainer').css("display", "none");
     $('#businessesListPanelContainer').removeClass("hidden");
 }
@@ -880,8 +904,10 @@ function handleServiceMenuPageNavigationTriggerButtonClick() {
     $('#commonMenuNavigationTriggerButton').on('click', function() {
         if ($("#commonMenuItemsHolder").hasClass("hidden")) {
             $('#commonMenuItemsHolder').removeClass('hidden');
+            $('.commonMenuNavigationContainer').css('background-color', 'rgba(31,162,229,0.1)');
         } else {
             $('#commonMenuItemsHolder').addClass('hidden');
+            $('.commonMenuNavigationContainer').css('background-color', 'transparent');
         }
     });
 }
