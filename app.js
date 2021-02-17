@@ -113,10 +113,10 @@ function serviceMenuHeaderContentTemplate() {
     <div class="servicesTopContainer">
         <div class="commonMenuNavigationContainer">
             <div class="commonMenuNavigationItems commonMenuHeaderIcon"> 
-                <img src="./images/icons/menu/menu_new.png" id="commonMenuNavigationTriggerButton" alt="menu button with 4 dots with blue color" tabindex="1">
+                <img src="./images/icons/menu/menu_new.png" id="commonMenuNavigationTriggerButton" alt="menu button with 4 dots with blue color" tabindex="1" aria-pressed="false" alt="menu icon with black dots">
                 <div class="commonMenuHolder hidden" id="commonMenuItemsHolder">
                     <div class="commonMenuContainer">
-                        <div class="commonMenuItem serviceHomeIconContainer"><img src="./images/icons/menu/modified/homeIcon.gif" id="serviceHomeImageButton" tabindex="2" aria-pressed="false"></div>
+                        <div class="commonMenuItem serviceHomeIconContainer"><img src="./images/icons/menu/modified/homeIcon.gif" id="serviceHomeImageButton" tabindex="2" aria-pressed="false" alt="menu home image with animation"></div>
                     </div>
                 </div>
             </div>
@@ -152,83 +152,83 @@ function generateServiceTileImagesTemplate() {
                 <div class="imageTileNameContainer">Security Systems</div>
             </div>
             <div class="singleImageTileNameContainer">
-                <div class="imageContainer"><img src="./images/image-tiles/pest-control.jpg" class="serviceMenuTileImage" id="pestControlTile" tabindex="4" aria-pressed="false"></div>
+                <div class="imageContainer"><img src="./images/image-tiles/pest-control.jpg" class="serviceMenuTileImage" id="pestControlTile" tabindex="4" aria-pressed="false" alt="man sprinkling pest control"></div>
                 <div class="imageTileNameContainer">Pest Control</div>
             </div>
             <div class="singleImageTileNameContainer">
-                <div class="imageContainer"><img src="./images/image-tiles/landscaping.jpg" class="serviceMenuTileImage" id="landscapingTile" tabindex="5" aria-pressed="false"></div>
+                <div class="imageContainer"><img src="./images/image-tiles/landscaping.jpg" class="serviceMenuTileImage" id="landscapingTile" tabindex="5" aria-pressed="false" alt="men laying out grass"></div>
                 <div class="imageTileNameContainer">Landscaping</div>
             </div>
             <div class="singleImageTileNameContainer">
-                <div class="imageContainer"><img src="./images/image-tiles/cleaningServices.jpg" class="serviceMenuTileImage"  id="cleaningServicesTile" tabindex="6" aria-pressed="false"></div>
+                <div class="imageContainer"><img src="./images/image-tiles/cleaningServices.jpg" class="serviceMenuTileImage"  id="cleaningServicesTile" tabindex="6" aria-pressed="false" alt="woman cleaning water hose"></div>
                 <div class="imageTileNameContainer">Cleaning Services</div>
             </div>
             <div class="singleImageTileNameContainer">
-                <div class="imageContainer"><img src="./images/image-tiles/HVAC.jpg" class="serviceMenuTileImage" id="hvacTile" aria-pressed="false" tabindex="7"></div>
+                <div class="imageContainer"><img src="./images/image-tiles/HVAC.jpg" class="serviceMenuTileImage" id="hvacTile" aria-pressed="false" tabindex="7" alt="hvac technician doing routine checkup"></div>
                 <div class="imageTileNameContainer">HVAC</div>
             </div>
             <div class="singleImageTileNameContainer">
-                <div class="imageContainer"><img src="./images/image-tiles/roofing.jpg" class="serviceMenuTileImage" id="roofingServicesTile" aria-pressed="false" tabindex="8"></div>
+                <div class="imageContainer"><img src="./images/image-tiles/roofing.jpg" class="serviceMenuTileImage" id="roofingServicesTile" aria-pressed="false" tabindex="8" alt="man arranging roof panels"></div>
                 <div class="imageTileNameContainer">Roofing Services</div>
             </div>
             <div class="singleImageTileNameContainer">
-                <div class="imageContainer"><img src="./images/image-tiles/plumbing.jpg" class="serviceMenuTileImage" id="plumbingTile" aria-pressed="false" tabindex="9"></div>
+                <div class="imageContainer"><img src="./images/image-tiles/plumbing.jpg" class="serviceMenuTileImage" id="plumbingTile" aria-pressed="false" tabindex="9" alt="man fixing plumbing line under sink"></div>
                 <div class="imageTileNameContainer">Plumbing</div>
             </div>
             <div class="singleImageTileNameContainer">
-                <div class="imageContainer"><img src="./images/image-tiles/electrical.jpg" class="serviceMenuTileImage" id="electricalServicesTile" aria-pressed="false" tabindex="10"></div>
+                <div class="imageContainer"><img src="./images/image-tiles/electrical.jpg" class="serviceMenuTileImage" id="electricalServicesTile" aria-pressed="false" tabindex="10" alt="electricians fixing lights"></div>
                 <div class="imageTileNameContainer">Electrical Services</div>
             </div>
             <div class="singleImageTileNameContainer">
-                <div class="imageContainer"><img src="./images/image-tiles/windowInstallation.jpg" class="serviceMenuTileImage" id="windowInstallationTile" aria-pressed="false" tabindex="11"></div>
+                <div class="imageContainer"><img src="./images/image-tiles/windowInstallation.jpg" class="serviceMenuTileImage" id="windowInstallationTile" aria-pressed="false" tabindex="11" alt="man doing window installation"></div>
                 <div class="imageTileNameContainer">Window Installation</div>
             </div>
             <div class="singleImageTileNameContainer">
-                <div class="imageContainer"><img src="./images/image-tiles/fencing_installation.jpg" class="serviceMenuTileImage" id="fencingServicesTile" aria-pressed="false" tabindex="12"></div>
+                <div class="imageContainer"><img src="./images/image-tiles/fencing_installation.jpg" class="serviceMenuTileImage" id="fencingServicesTile" aria-pressed="false" tabindex="12" alt="two men installing fences"></div>
                 <div class="imageTileNameContainer">Fencing Services</div>
             </div>
             <div class="singleImageTileNameContainer">
-                <div class="imageContainer"><img src="./images/image-tiles/garage-services.jpg" class="serviceMenuTileImage" id="garageServicesTile" aria-pressed="false" tabindex="13"></div>
+                <div class="imageContainer"><img src="./images/image-tiles/garage-services.jpg" class="serviceMenuTileImage" id="garageServicesTile" aria-pressed="false" tabindex="13" alt="two men repairing garage door"></div>
                 <div class="imageTileNameContainer">Garage Services</div>
             </div>
             <div class="singleImageTileNameContainer">
-                <div class="imageContainer"><img src="./images/image-tiles/Siding.jpg" class="serviceMenuTileImage" id="sidingServicesTile" aria-pressed="false" tabindex="14"></div>
+                <div class="imageContainer"><img src="./images/image-tiles/Siding.jpg" class="serviceMenuTileImage" id="sidingServicesTile" aria-pressed="false" tabindex="14" alt="man installing siding around house"></div>
                 <div class="imageTileNameContainer">Siding Services</div>
             </div>
             <div class="singleImageTileNameContainer">
-                <div class="imageContainer"><img src="./images/image-tiles/solar-panel-installation.jpg" class="serviceMenuTileImage" id="solarPanelTile" aria-pressed="false" tabindex="15"></div>
+                <div class="imageContainer"><img src="./images/image-tiles/solar-panel-installation.jpg" class="serviceMenuTileImage" id="solarPanelTile" aria-pressed="false" tabindex="15" alt="man installing solar panel"></div>
                 <div class="imageTileNameContainer">Solar Panel Installation</div>
             </div>
             <div class="singleImageTileNameContainer">
-                <div class="imageContainer"><img src="./images/image-tiles/carpet_cleaning.jpg" class="serviceMenuTileImage" id="carpetCleaningTile" aria-pressed="false" tabindex="16"></div>
+                <div class="imageContainer"><img src="./images/image-tiles/carpet_cleaning.jpg" class="serviceMenuTileImage" id="carpetCleaningTile" aria-pressed="false" tabindex="16" alt="two men carpet cleaning"></div>
                 <div class="imageTileNameContainer">Carpet Cleaning</div>
             </div>
             <div class="singleImageTileNameContainer">
-                <div class="imageContainer"><img src="./images/image-tiles/shades_blinds.jpg" class="serviceMenuTileImage" id="shadesAndBlindsTile" aria-pressed="false" tabindex="17"></div>
+                <div class="imageContainer"><img src="./images/image-tiles/shades_blinds.jpg" class="serviceMenuTileImage" id="shadesAndBlindsTile" aria-pressed="false" tabindex="17" alt="man installing shade"></div>
                 <div class="imageTileNameContainer">Shades & Blinds</div>
             </div>
             <div class="singleImageTileNameContainer">
-                <div class="imageContainer"><img src="./images/image-tiles/carpet-installation.jpg" class="serviceMenuTileImage" id="carpetInstallationTile" aria-pressed="false" tabindex="18"></div>
+                <div class="imageContainer"><img src="./images/image-tiles/carpet-installation.jpg" class="serviceMenuTileImage" id="carpetInstallationTile" aria-pressed="false" tabindex="18" alt="man installing carpet"></div>
                 <div class="imageTileNameContainer">Carpet Installation</div>
             </div>
             <div class="singleImageTileNameContainer">
-                <div class="imageContainer"><img src="./images/image-tiles/painting_services.jpg" class="serviceMenuTileImage" id="paintingServicesTile" aria-pressed="false" tabindex="19"></div>
+                <div class="imageContainer"><img src="./images/image-tiles/painting_services.jpg" class="serviceMenuTileImage" id="paintingServicesTile" aria-pressed="false" tabindex="19" alt="man painting wall with yellow paint"></div>
                 <div class="imageTileNameContainer">Painting Services</div>
             </div>
             <div class="singleImageTileNameContainer">
-                <div class="imageContainer"><img src="./images/image-tiles/fireplace_services.jpg" class="serviceMenuTileImage" id="fireplaceServicesTile" aria-pressed="false" tabindex="20"></div>
+                <div class="imageContainer"><img src="./images/image-tiles/fireplace_services.jpg" class="serviceMenuTileImage" id="fireplaceServicesTile" aria-pressed="false" tabindex="20" alt="man repairing fireplace"></div>
                 <div class="imageTileNameContainer">Fireplace Services</div>
             </div>
             <div class="singleImageTileNameContainer">
-                <div class="imageContainer"><img src="./images/image-tiles/duct-cleaning.jpg" class="serviceMenuTileImage" id="airDuctServicesTile" aria-pressed="false" tabindex="21"></div>
+                <div class="imageContainer"><img src="./images/image-tiles/duct-cleaning.jpg" class="serviceMenuTileImage" id="airDuctServicesTile" aria-pressed="false" tabindex="21" alt="man cleaning air duct"></div>
                 <div class="imageTileNameContainer">Air Duct Services</div>
             </div>
             <div class="singleImageTileNameContainer">
-                <div class="imageContainer"><img src="./images/image-tiles/pool-services.jpg" class="serviceMenuTileImage" id="poolServicesTile" aria-pressed="false" tabindex="22"></div>
+                <div class="imageContainer"><img src="./images/image-tiles/pool-services.jpg" class="serviceMenuTileImage" id="poolServicesTile" aria-pressed="false" tabindex="22" alt="man cleaning pool"></div>
                 <div class="imageTileNameContainer">Pool Services</div>
             </div>
             <div class="singleImageTileNameContainer">
-                <div class="imageContainer"><img src="./images/image-tiles/handyman_services.jpg" class="serviceMenuTileImage" id="handymanServicesTile" aria-pressed="false" tabindex="23"></div>
+                <div class="imageContainer"><img src="./images/image-tiles/handyman_services.jpg" class="serviceMenuTileImage" id="handymanServicesTile" aria-pressed="false" tabindex="23" alt="handyman with all different types of tools"></div>
             <div class="imageTileNameContainer">Handyman</div>
         </div>
         </div>
@@ -369,11 +369,11 @@ function businessesListPageHeaderContentTemplate(imageTileID, store) {
     <div class="businessesListStyleContainer">
         <div class="commonMenuNavigationContainer">
             <div class="commonMenuNavigationItems commonMenuHeaderIcon" > 
-                <img src="./images/icons/menu/menu_new.png" id="commonMenuNavigationTriggerButton">
+                <img src="./images/icons/menu/menu_new.png" id="commonMenuNavigationTriggerButton" alt="menu button with 4 dots with blue color" tabindex="1" aria-pressed="false">
                 <div class="commonMenuHolder hidden" id="commonMenuItemsHolder">
                     <div class="commonMenuContainer">
-                        <div class="commonMenuItem serviceHomeIconContainer"><img src="./images/icons/menu/modified/homeIcon.gif" id="businessesListHomeImageButton"></div>
-                        <div class="commonMenuItem serviceServicesMenuIconContainer"><img src="./images/icons/menu/modified/servicesIcon.gif" id="businessesListServicesImageButton"></div>
+                        <div class="commonMenuItem serviceHomeIconContainer"><img src="./images/icons/menu/modified/homeIcon.gif" id="businessesListHomeImageButton" tabindex="2" aria-pressed="false" alt="home page animated icon"></div>
+                        <div class="commonMenuItem serviceServicesMenuIconContainer"><img src="./images/icons/menu/modified/servicesIcon.gif" id="businessesListServicesImageButton" tabindex="3" aria-pressed="false" alt="services animated icon"></div>
                     </div>
                 </div>
             </div>
@@ -466,11 +466,11 @@ function detailedBusinessInfoPageHeaderContentTemplate() {
     <div class="detailedBusinessInfoPageListStyleContainer">
         <div class="commonMenuNavigationContainer">
             <div class="commonMenuNavigationItems commonMenuHeaderIcon" > 
-                <img src="./images/icons/menu/menu_new.png" id="commonMenuNavigationTriggerButton">
+                <img src="./images/icons/menu/menu_new.png" id="commonMenuNavigationTriggerButton" tabindex="1" aria-pressed="false" alt="menu button with black dots">
                 <div class="commonMenuHolder hidden" id="commonMenuItemsHolder">
                     <div class="commonMenuContainer">
-                        <div class="commonMenuItem serviceHomeIconContainer"><img src="./images/icons/menu/modified/homeIcon.gif" id="detailedBusinessInfoHomeImageButton"></div>
-                        <div class="commonMenuItem serviceServicesMenuIconContainer"><img src="./images/icons/menu/modified/detailedBusinessInfoIcon.gif" id="detailedBusinessInfoBusinessesListImageButton"></div>
+                        <div class="commonMenuItem serviceHomeIconContainer"><img src="./images/icons/menu/modified/homeIcon.gif" id="detailedBusinessInfoHomeImageButton" tabindex="2" aria-pressed="false" alt="home page menu icon"></div>
+                        <div class="commonMenuItem serviceServicesMenuIconContainer"><img src="./images/icons/menu/modified/detailedBusinessInfoIcon.gif" id="detailedBusinessInfoBusinessesListImageButton" tabindex="3" aria-pressed="false" alt="businesses list page menu icon"></div>
                     </div>
                 </div>
             </div>
@@ -528,7 +528,7 @@ function generateBusinessInfoPageContentTemplate(selectedBusinessInfoPageStore) 
         </div>
     </div>
     <div class="morInfoContainer">
-        <div class="moreInfoItem"><button type="button" onclick="window.open('${srcDetailsAddress}','_blank')" class="moreDetailsLinkButton moreDetailsStyled">More Details</button></div>
+        <div class="moreInfoItem"><button type="button" onclick="window.open('${srcDetailsAddress}','_blank')" class="moreDetailsLinkButton moreDetailsStyled">More Info</button></div>
     </div>
     </div>
     <div class="gaper"></div>`;
@@ -741,6 +741,7 @@ function getMiles(valInMeters) {
 function generateBusinessesListPanel(responseJson, businessesDistanceArray) {
     let businessesNamesArray = [];
     let verifyLength = responseJson.results.length;
+    let tabIndexValue = 4;
 
     if (verifyLength === 0) {
         $('#businessesListPanelContainer').append(`
@@ -756,10 +757,11 @@ function generateBusinessesListPanel(responseJson, businessesDistanceArray) {
 
         for (let j = 0; j < responseJson.results.length; j++) {
             $('#businessesListPanelContainer').append(`
-                <div class="businessItemContainer">         
-                    <div class="businessNameContainer">${businessesNamesArray[j]}</div>
+                <div class="businessItemContainer" >         
+                    <div class="businessNameContainer" tabindex="${tabIndexValue}" aria-pressed="false">${businessesNamesArray[j]}</div>
                     <div class="businessDistanceContainer">Distance: ${businessesDistanceArray[j]} miles</div>         
                 </div>`);
+            tabIndexValue++;
         }
     }
 
@@ -966,9 +968,23 @@ function handleBusinessesListPageNavigationFormSubmission() {
         event.preventDefault();
         provideRoute(routingParamsHolder.currentPage[0]);
     });
+    $('#businessesListHomeImageButton').keyup('click', function(event) {
+        if (event.keyCode === 13) {
+            const targetButton = $(event.currentTarget);
+            targetButton.attr('aria-pressed', true);
+            $('#businessesListHomeImageButton').click();
+        }
+    });
     $('#businessesListHomeImageButton').on('click', function(event) {
         event.preventDefault();
         provideRoute(routingParamsHolder.currentPage[0]);
+    });
+    $('#businessesListServicesImageButton').keyup('click', function(event) {
+        if (event.keyCode === 13) {
+            const targetButton = $(event.currentTarget);
+            targetButton.attr('aria-pressed', true);
+            $('#businessesListServicesImageButton').click();
+        }
     });
     $('#businessesListServicesImageButton').on('click', function(event) {
         event.preventDefault();
@@ -978,6 +994,21 @@ function handleBusinessesListPageNavigationFormSubmission() {
 
 
 function handleDetailedBusinessInfoPageBNameClick() {
+
+    $('#businessesListPanelContainer').on('keyup', '.businessNameContainer', function(event) {
+        if (event.keyCode === 13) {
+            const targetImage = $(event.currentTarget);
+            const otherImage = $('#businessesListPanelContainer .businessNameContainer').not(targetImage);
+            targetImage.attr('aria-pressed', true);
+            const pressedBool = $(targetImage).attr('aria-pressed') === 'true';
+            otherImage.attr('aria-pressed', false);
+            if (pressedBool) {
+                targetImage.attr('aria-pressed', true);
+                targetImage.click();
+            }
+        }
+    });
+
     $('#businessesListPanelContainer').on('click', '.businessNameContainer', function(event) {
         event.preventDefault();
         let receivedBName = $(event.currentTarget).text();
@@ -998,9 +1029,23 @@ function handleBusinessInfoPageNavigationFormSubmission() {
         event.preventDefault();
         provideRoute(routingParamsHolder.currentPage[0]);
     });
+    $('#detailedBusinessInfoHomeImageButton').keyup('click', function(event) {
+        if (event.keyCode === 13) {
+            const targetButton = $(event.currentTarget);
+            targetButton.attr('aria-pressed', true);
+            $('#detailedBusinessInfoHomeImageButton').click();
+        }
+    });
     $('#detailedBusinessInfoHomeImageButton').on('click', function(event) {
         event.preventDefault();
         provideRoute(routingParamsHolder.currentPage[0]);
+    });
+    $('#detailedBusinessInfoBusinessesListImageButton').keyup('click', function(event) {
+        if (event.keyCode === 13) {
+            const targetButton = $(event.currentTarget);
+            targetButton.attr('aria-pressed', true);
+            $('#detailedBusinessInfoBusinessesListImageButton').click();
+        }
     });
     $('#detailedBusinessInfoBusinessesListImageButton').on('click', function(event) {
         event.preventDefault();
