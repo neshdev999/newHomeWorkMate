@@ -86,12 +86,13 @@ function searchInputControlBox() {
         <div class="mainHomeFormHeading">Give us a few details and we’ll match you with the right pro.</div>
         <div class="inputControlFormContainer">
             <form id="homePageForm">
-                <input id="zip" name="zip" type="text" pattern="[0-9]*" placeholder=" ZIP Code">
+                <input id="zip" name="zip" type="text" pattern="[0-9]*" maxlength="5" placeholder=" ZIP Code">
                 <input type="submit" value="Submit" id="zipSubmitButton">
+                <div id="serverErrorReportContainer">
+                </div>
             </form>
         </div>
-        <div id="serverErrorReportContainer">
-        </div>
+
     </div>
     <div class="randomBorderGenSecondSector"></div>`;
 }
@@ -418,12 +419,12 @@ function businessesListNavigationInputControlBox() {
     <div>
         <div id="distanceErrorContainer"></div>
         <div id="businessesListNavigationFormContainer">
-            <div class="businessListNavigationFormItem">
+            <div class="businessListNavigationFormItem individualItemOne">
                 <form id="businessListNavigationFormReturnServicesMenu">
                     <input type="submit" value="" class="businessListNavigationButton" id="businessesListNavigationServSubmitButton">
                 </form>
             </div>
-            <div class="businessListNavigationFormItem">
+            <div class="businessListNavigationFormItem individualItemTwo">
                 <form id="businessListNavigationFormReturnHomePageMenu">
                     <input type="submit" value="" class="businessListNavigationButton" id="businessesListNavigationHomeSubmitButton">
                 </form>
@@ -542,12 +543,12 @@ function businessInfoPageNavigationInputControlBox() {
     return `
     <div>
         <div id="businessInfoPageNavigationFormContainer">
-            <div class="businessInfoPageNavigationFormItem">
+            <div class="businessInfoPageNavigationFormItem individualItemOne">
                 <form id="businessInfoPageNavigationFormReturnListsMenu">
                     <input type="submit" value="" class="businessInfoPageNavigationButton" id="detailedBusinessInfoNavigationBussSubmitButton">
                 </form>
             </div>
-            <div class="businessInfoPageNavigationFormItem">
+            <div class="businessInfoPageNavigationFormItem individualItemTwo">
                 <form id="businessInfoPageNavigationFormReturnHomePageMenu">
                     <input type="submit" value="" class="businessInfoPageNavigationButton" id="detailedBusinessInfoNavigationHomeSubmitButton">
                 </form>
@@ -743,6 +744,11 @@ function generateBusinessesListPanel(responseJson, businessesDistanceArray) {
     let verifyLength = responseJson.results.length;
     let tabIndexValue = 4;
 
+    $('#businessesListPanelContainer').append(`
+    <div class="businessItemContainer"> 
+        <div id="businessHeadingNameContainer">Business</div><div id="businessHeadingDistanceContainer">Distance</div>
+    </div>`);
+
     if (verifyLength === 0) {
         $('#businessesListPanelContainer').append(`
             <div class="businessItemContainer">         
@@ -759,7 +765,7 @@ function generateBusinessesListPanel(responseJson, businessesDistanceArray) {
             $('#businessesListPanelContainer').append(`
                 <div class="businessItemContainer" >         
                     <div class="businessNameContainer" tabindex="${tabIndexValue}" aria-pressed="false">${businessesNamesArray[j]}</div>
-                    <div class="businessDistanceContainer">Distance: ${businessesDistanceArray[j]} miles</div>         
+                    <div class="businessDistanceContainer">${businessesDistanceArray[j]} miles</div>         
                 </div>`);
             tabIndexValue++;
         }
@@ -827,7 +833,9 @@ async function mapQuestDelay(lat, lng, businessLocationLat, businessLocationLng)
             })
         .catch(err => {
             $('#distanceErrorContainer').text(`Server has responded with error 😪  : ${err.message} 😫`);
-            $('#serverErrorReportContainer').css('display', 'block');
+            // $('#serverErrorReportContainer').css('display', 'block');
+            $('#distanceErrorContainer').css('display', 'block');
+
             return 0;
         });
 }
@@ -884,7 +892,7 @@ function handleHomePageFormSubmission() {
                 $('#serverErrorReportContainer').css('display', 'block');
             }
         } else {
-            $('#serverErrorReportContainer').text(`Invalid Zipcode  😫: Please enter valid Zipcode 😪 `);
+            $('#serverErrorReportContainer').text(`The specified ZIP is invalid 😫😪`);
             $('#serverErrorReportContainer').css('display', 'block');
         }
     });

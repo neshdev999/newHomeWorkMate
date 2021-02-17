@@ -173,6 +173,12 @@ h2 {
     margin: 0 0 10px 0;
 }
 
+::placeholder {
+    color: azure;
+    font-weight: bold;
+    opacity: 1;
+}
+
 
 /* Main Image Slider */
 
@@ -329,6 +335,7 @@ h2 {
 .serviceServicesMenuIconContainer {
     background-color: #cac9f7;
     background-color: rgba(202, 201, 247, 0.9);
+    background-color: rgba(146, 200, 232, 0.5);
     margin: 2%;
     padding: 2%;
 }
@@ -344,6 +351,8 @@ h2 {
     background-color: #fa3455;
     background-color: #ee4b66;
     /* background-color: rgba(236,73,104,0.8); */
+    color: #264197;
+    color: #f5f5f7;
     padding-top: 2px;
     padding-bottom: 2px;
     margin-top: 0px;
@@ -404,7 +413,7 @@ h2 {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
     color: blue;
-    margin: 1%;
+    /* margin: 1%; */
 }
 
 #serviceMenuPageNavigationForm {
@@ -414,25 +423,19 @@ h2 {
 .serviceMenuPageButton {
     background-color: #caeccb;
     border: none;
-    padding: 16px 32px;
+    padding: 14px 40px;
     text-decoration: none;
     margin: 4px 2px;
     cursor: pointer;
     color: darkorchid;
 }
 
-.serviceMenuPageButton:hover {
+
+/* .serviceMenuPageButton:hover {
     background-color: #50e755;
     color: white;
     font-weight: bold;
-}
-
-.imageTileNameContainer {
-    line-height: 100px;
-    font-family: "Montserrat", sans-serif;
-    font-size: 20px;
-    font-weight: semibold;
-}
+} */
 
 #serviceMenuNavigationSubmitButton {
     background: url('./images/icons/menu/modified/homeIcon.gif');
@@ -443,6 +446,19 @@ h2 {
     border: 2px solid darkorchid;
     border: 1px solid #4b75cc;
     border-radius: 5px;
+}
+
+#serviceMenuNavigationSubmitButton:hover {
+    background-color: rgb(102, 195, 226);
+    box-shadow: 1px 1px darkblue;
+}
+
+.imageTileNameContainer {
+    line-height: 100px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    font-weight: semibold;
+    color: #1d1d1f;
 }
 
 
@@ -565,7 +581,7 @@ h2 {
 
 #businessesListNavigationFormContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     /* margin: 2%; */
@@ -574,27 +590,79 @@ h2 {
 
 .businessListNavigationFormItem {
     flex: 1;
+    display: flex;
 }
 
+.individualItemOne {
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.individualItemTwo {
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+/* #businessListNavigationFormReturnServicesMenu {
+    width: 80px;
+} */
+
 .businessListNavigationButton {
-    background-color: #caeccb;
+    /* background-color: #caeccb; */
     border: none;
-    padding: 16px 32px;
+    /* padding: 16px 32px; */
+    padding: 14px 40px;
     text-decoration: none;
     margin: 4px 2px;
     cursor: pointer;
-    color: darkorchid;
+    /* color: darkorchid; */
 }
 
-.businessListNavigationButton:hover {
+
+/* .businessListNavigationButton:hover {
     background-color: #50e755;
+    background-color: red;
     color: white;
     font-weight: bold;
+} */
+
+#businessesListNavigationServSubmitButton {
+    background: url('./images/icons/menu/modified/servicesIcon.gif');
+    border: none;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-color: lightblue;
+    border: 2px solid darkorchid;
+    border: 1px solid #4b75cc;
+    border-radius: 5px;
+}
+
+#businessesListNavigationServSubmitButton:hover {
+    background-color: rgb(102, 195, 226);
+    box-shadow: 1px 1px darkblue;
+}
+
+#businessesListNavigationHomeSubmitButton {
+    background: url('./images/icons/menu/modified/homeIcon.gif');
+    border: none;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-color: lightblue;
+    border: 2px solid darkorchid;
+    border: 1px solid #4b75cc;
+    border-radius: 5px;
+}
+
+#businessesListNavigationHomeSubmitButton:hover {
+    background-color: rgb(102, 195, 226);
+    box-shadow: 1px 1px darkblue;
 }
 
 .businessesListHeader {
     text-align: center;
     /* background-color: rgba(251, 145, 119, 0.3); */
+    color: #f5f5f7;
 }
 
 .businessesListHeaderImageHolder {
@@ -645,11 +713,62 @@ h2 {
     cursor: pointer;
     border-radius: 5px;
     border-bottom: 4px solid #d9d9d9;
+    color: #d51e1e;
+    color: #fd7d4a;
+    color: #94bdce;
+    color: #88bacf;
+    font-weight: bold;
 }
 
 .businessNameContainer:hover {
     box-shadow: 0px 15px 25px -5px #0057ab;
     transform: scale(1.03);
+}
+
+.businessItemContainer>#businessHeadingNameContainer {
+    flex: 2;
+}
+
+#businessHeadingNameContainer {
+    /* padding: 1.5rem 2rem; */
+    /* background-color: darkcyan; */
+    background-color: #fff;
+    background-color: thistle;
+    background-color: rgba(78, 60, 182, 0.2);
+    border: 0;
+    outline: 0;
+    /* font-size: 4rem; */
+    font-size: 18px;
+    font-family: monospace;
+    box-shadow: 0px 5px 10px #0057ab;
+    /* transition: all 0.3s;
+    cursor: pointer; */
+    border-radius: 5px;
+    border-bottom: 4px solid #d9d9d9;
+    color: #d51e1e;
+    color: #fd7d4a;
+    /* color: #94bdce;
+    color: #88bacf; */
+    color: white;
+    font-weight: bold;
+}
+
+#businessHeadingDistanceContainer {
+    /* padding: 1.5rem 2rem; */
+    /* background-color: darkcyan;  */
+    background-color: #79e3b6;
+    background-color: rgba(78, 60, 182, 0.2);
+    /* background-color: rgba(239, 162, 125); */
+    border-radius: 2px;
+    border: 2px solid black;
+    border-radius: 0.5px;
+    border: 2px solid azure;
+    color: #985b6a;
+    color: #9c4f62;
+    color: white;
+    /* color: #444153; */
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .businessNameContainer:active {
@@ -669,6 +788,13 @@ h2 {
     background-color: rgba(239, 162, 125);
     border-radius: 2px;
     border: 2px solid black;
+    border-radius: 0.5px;
+    border: 2px solid azure;
+    color: #985b6a;
+    color: #9c4f62;
+    color: #444153;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .hidden {
@@ -679,34 +805,14 @@ h2 {
     display: none;
     background: tomato;
     color: turquoise;
+    background: whitesmoke;
+    color: rgb(221, 83, 83);
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 20px;
     margin: 2%;
     padding: 1%;
     border-radius: 2px;
     text-align: center;
-}
-
-#businessesListNavigationServSubmitButton {
-    background: url('./images/icons/menu/modified/servicesIcon.gif');
-    border: none;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-color: lightblue;
-    border: 2px solid darkorchid;
-    border: 1px solid #4b75cc;
-    border-radius: 5px;
-}
-
-#businessesListNavigationHomeSubmitButton {
-    background: url('./images/icons/menu/modified/homeIcon.gif');
-    border: none;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-color: lightblue;
-    border: 2px solid darkorchid;
-    border: 1px solid #4b75cc;
-    border-radius: 5px;
 }
 
 
@@ -720,6 +826,17 @@ h2 {
     .businessItemContainer>.businessNameContainer {
         flex: 5;
     }
+    .businessItemContainer>#businessHeadingNameContainer {
+        flex: 5;
+    }
+    /* #businessHeadingNameContainer {
+        padding: 1.5rem 2rem;
+        background-color: darkcyan;
+    } */
+    /* #businessHeadingDistanceContainer {
+        padding: 1.5rem 2rem;
+        background-color: darkcyan;
+    } */
 }
 
 
@@ -734,7 +851,7 @@ h2 {
 
 #businessInfoPageNavigationFormContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     background-color: #fafafb;
@@ -743,6 +860,8 @@ h2 {
 
 .businessInfoPageNavigationFormItem {
     flex: 1;
+    display: flex;
+    flex-direction: row;
 }
 
 .businessInfoPageNavigationButton {
@@ -752,15 +871,55 @@ h2 {
     padding: 20px; */
     margin: 4px 2px;
     padding: 16px 32px;
+    padding: 14px 40px;
     text-decoration: none;
     cursor: pointer;
     color: darkorchid;
 }
 
-.businessInfoPageNavigationButton:hover {
+
+/* .businessInfoPageNavigationButton:hover {
     background-color: #50e755;
     color: white;
     font-weight: bold;
+} */
+
+#detailedBusinessInfoNavigationBussSubmitButton {
+    background: url('./images/icons/menu/modified/detailedBusinessInfoIcon.gif');
+    border: none;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-color: lightblue;
+    border: 2px solid darkorchid;
+    border: 1px solid #4b75cc;
+    border-radius: 5px;
+}
+
+#detailedBusinessInfoNavigationBussSubmitButton:hover {
+    background-color: rgb(102, 195, 226);
+    box-shadow: 1px 1px darkblue;
+}
+
+
+/* #businessInfoPageNavigationFormReturnListsMenu {
+    margin: 2%;
+    padding: 50px;
+} */
+
+#detailedBusinessInfoNavigationHomeSubmitButton {
+    background: url('./images/icons/menu/modified/homeIcon.gif');
+    border: none;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-color: lightblue;
+    border: 2px solid darkorchid;
+    border: 1px solid #4b75cc;
+    border-radius: 5px;
+}
+
+#detailedBusinessInfoNavigationHomeSubmitButton:hover {
+    background-color: rgb(102, 195, 226);
+    box-shadow: 1px 1px darkblue;
 }
 
 .headerContainer {
@@ -776,6 +935,7 @@ h2 {
     background-color: #feded6;
     background-color: #fa3455;
     background-color: #ee4b66;
+    color: #f5f5f7;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 20px;
 }
@@ -809,6 +969,13 @@ h2 {
     padding-left: 1%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 16px;
+    /* color: #fff0e7; */
+    background-color: #fff0e7;
+    border: 0.5px solid whitesmoke;
+    border-radius: 3px;
+    color: #fc3526;
+    color: #949497;
+    font-weight: bold;
 }
 
 .addressUlListContainer li {
@@ -832,6 +999,8 @@ h2 {
     padding-left: 3%;
     padding-right: 3%;
     border-radius: 2px;
+    color: #444153;
+    color: #f8625d;
 }
 
 .mapStylesContainer {
@@ -935,6 +1104,8 @@ h2 {
     display: none;
     background: tomato;
     color: turquoise;
+    background: whitesmoke;
+    color: rgb(221, 83, 83);
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 20px;
     margin: 2%;
@@ -947,6 +1118,8 @@ h2 {
     display: none;
     background: tomato;
     color: turquoise;
+    background: whitesmoke;
+    color: rgb(221, 83, 83);
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 20px;
     margin: 2%;
@@ -1002,34 +1175,6 @@ h2 {
     to {
         transform: rotate(360deg);
     }
-}
-
-#detailedBusinessInfoNavigationBussSubmitButton {
-    background: url('./images/icons/menu/modified/detailedBusinessInfoIcon.gif');
-    border: none;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-color: lightblue;
-    border: 2px solid darkorchid;
-    border: 1px solid #4b75cc;
-    border-radius: 5px;
-}
-
-
-/* #businessInfoPageNavigationFormReturnListsMenu {
-    margin: 2%;
-    padding: 50px;
-} */
-
-#detailedBusinessInfoNavigationHomeSubmitButton {
-    background: url('./images/icons/menu/modified/homeIcon.gif');
-    border: none;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-color: lightblue;
-    border: 2px solid darkorchid;
-    border: 1px solid #4b75cc;
-    border-radius: 5px;
 }
 
 
