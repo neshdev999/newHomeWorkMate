@@ -3,6 +3,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Truculenta:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Benne&family=Truculenta:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
+
+/* @font-face {
+    font-family: 'Helvetica Neue';
+    src: url('./fonts/Helvetica_Neu_Bold.ttf');
+} */
+
+@font-face {
+    font-family: 'Helvetica Neue Medium';
+    src: url('./fonts/HelveticaNeue\ Medium.ttf');
+}
+
+@font-face {
+    font-family: 'frutiger';
+    src: url('./fonts/Frutiger\ LT\ Std\ 45\ Light\ Bold.otf');
+}
+
+@font-face {
+    font-family: 'helveticaneuebold';
+    src: url('./fonts/helvetica_neu_bold-webfont.woff2') format('woff2'), url('./fonts/helvetica_neu_bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'helveticaneuemedium';
+    src: url('helveticaneue_medium-webfont.woff2') format('woff2'), url('helveticaneue_medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 /* Default CSS */
 
@@ -63,7 +97,9 @@ body {
     /* margin: 2%; */
     background-color: #137DBD;
     background-color: #3C92BB;
-    padding: 100px;
+    /* padding: 100px; */
+    /* margin-left: 1%;
+    margin-right: 1%; */
     /* padding-bottom: 10px; */
     color: azure;
     /* color: #3C53BB;
@@ -72,6 +108,8 @@ body {
     font-weight: bold;
     background-image: url('./images/apptools/tools.png');
     background-repeat: repeat;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .mainHeaderContainer {
@@ -83,24 +121,40 @@ body {
     font-family: 'Truculenta', sans-serif;
 }
 
+.topHeaderFirstContent {
+    font-family: 'helveticaneuebold', sans-serif, serif;
+}
+
 .topHeaderSecondContent {
-    font-family: 'Benne', serif;
+    /* font-family: 'Benne', serif;
+    font-family: Helvetica Neue Medium, sans-serif, serif; */
+    font-family: 'frutiger', sans-serif, serif;
+    margin-left: 2%;
+    margin-right: 2%;
+    word-wrap: break-word;
+    text-align: justify;
 }
 
 .topHeaderContentContainer {
     background-color: rgba(0, 0, 0, 0.8);
-    margin-left: 20px;
+    /* margin-left: 20px;
     margin-right: 20px;
     padding-top: 40px;
-    padding-bottom: 40px;
+    padding-bottom: 40px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
 h1 {
-    font-size: 28px;
+    font-size: 34px;
 }
 
 h2 {
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .randomBorderGenSector {
@@ -127,7 +181,9 @@ h2 {
         height: 120px;
     }
     .mainHomePageFormContainer {
-        padding: 80px;
+        /* padding: 80px; */
+        padding-top: 80px;
+        padding-bottom: 80px;
         background-repeat: no-repeat;
         background-position: center;
         /* border: 10px solid black;
@@ -147,7 +203,7 @@ h2 {
         font-size: 40px;
     }
     h2 {
-        font-size: 26px;
+        font-size: 24px;
     }
 }
 
@@ -163,6 +219,7 @@ h2 {
     cursor: pointer;
     font-size: 24px;
     border-radius: 2px;
+    font-family: 'Playfair Display SC', serif;
 }
 
 #zip {
@@ -215,14 +272,18 @@ h2 {
 }
 
 #homePageForm input {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .mainHomeFormHeading {
     background-color: rgba(75, 75, 75, 0.9);
     background-color: rgba(12, 12, 12, 0.8);
     padding: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
 
@@ -356,6 +417,12 @@ h2 {
     padding-top: 2px;
     padding-bottom: 2px;
     margin-top: 0px;
+    font-family: 'helveticaneuemedium', sans-serif;
+    font-family: 'Roboto Mono', monospace;
+}
+
+#serviceMenuPageHeader>h2 {
+    font-size: 30px;
 }
 
 .imagteTileParentWrapper {
@@ -471,6 +538,9 @@ h2 {
         margin-top: 0px;
         padding-top: 5px;
         padding-bottom: 5px;
+    }
+    #serviceMenuPageHeader>h2 {
+        font-size: 34px;
     }
     .imageTilesWrapper {
         flex-direction: row;
@@ -663,6 +733,11 @@ h2 {
     text-align: center;
     /* background-color: rgba(251, 145, 119, 0.3); */
     color: #f5f5f7;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.businessesListHeader>h2 {
+    font-size: 30px;
 }
 
 .businessesListHeaderImageHolder {
@@ -706,8 +781,9 @@ h2 {
     outline: 0;
     padding: 1.5rem 2rem;
     /* font-size: 4rem; */
-    font-size: 18px;
+    font-size: 20px;
     font-family: monospace;
+    font-family: 'Source Sans Pro', sans-serif;
     box-shadow: 0px 5px 10px #0057ab;
     transition: all 0.3s;
     cursor: pointer;
@@ -738,8 +814,9 @@ h2 {
     border: 0;
     outline: 0;
     /* font-size: 4rem; */
-    font-size: 18px;
-    font-family: monospace;
+    font-size: 24px;
+    /* font-family: monospace; */
+    font-family: "Montserrat", sans-serif;
     box-shadow: 0px 5px 10px #0057ab;
     /* transition: all 0.3s;
     cursor: pointer; */
@@ -768,7 +845,7 @@ h2 {
     color: white;
     /* color: #444153; */
     font-weight: bold;
-    font-size: 18px;
+    font-size: 28px;
 }
 
 .businessNameContainer:active {
@@ -795,6 +872,7 @@ h2 {
     color: #444153;
     font-weight: bold;
     font-size: 18px;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .hidden {
@@ -823,6 +901,9 @@ h2 {
         padding-top: 50px;
         padding-bottom: 50px;
     }
+    .businessNameContainer {
+        font-size: 22px;
+    }
     .businessItemContainer>.businessNameContainer {
         flex: 5;
     }
@@ -837,6 +918,15 @@ h2 {
         padding: 1.5rem 2rem;
         background-color: darkcyan;
     } */
+    #businessHeadingNameContainer {
+        font-size: 28px;
+    }
+    #businessHeadingDistanceContainer {
+        font-size: 28px;
+    }
+    #businessesListHeader>h2 {
+        font-size: 34px;
+    }
 }
 
 
@@ -937,7 +1027,8 @@ h2 {
     background-color: #ee4b66;
     color: #f5f5f7;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 20px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 30px;
 }
 
 .headerItem {
@@ -964,11 +1055,13 @@ h2 {
 }
 
 .addressUlListContainer {
-    text-align: left;
-    padding-right: 4%;
-    padding-left: 1%;
+    /* text-align: left; */
+    flex: 1;
+    /* padding-right: 10px;
+    padding-left: 10px; */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
     /* color: #fff0e7; */
     background-color: #fff0e7;
     border: 0.5px solid whitesmoke;
@@ -979,21 +1072,27 @@ h2 {
 }
 
 .addressUlListContainer li {
-    padding: 2px;
+    /* padding: 10px; */
+    padding: 5px;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
 .addressUlList {
+    margin: 0;
+    padding: 0;
     list-style-type: none;
-    font-size: 16px;
+    /* font-size: 16px; */
 }
 
 .addressHeader {
-    margin-left: 2%;
-    margin-right: 2%;
+    flex: 1;
+    /* margin-left: 2%;
+    margin-right: 2%; */
     text-align: center;
     /* background-color: burlywood; */
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
     /* padding: 1%; */
     padding: 20px;
     padding-left: 3%;
@@ -1132,8 +1231,12 @@ h2 {
 /* Desktop Screen */
 
 @media screen and (min-width: 992px) {
+    .addressUlListContainer {
+        font-size: 20px;
+    }
     .headerContainer {
         padding: 80px;
+        font-size: 34px;
     }
     .mapContainer {
         text-align: center;
@@ -1141,6 +1244,9 @@ h2 {
         margin-left: 10%;
         margin-right: 10%;
         padding: 1%;
+    }
+    .addressHeader {
+        font-size: 24px;
     }
 }
 
@@ -1190,6 +1296,7 @@ h2 {
     /* padding-bottom: 0px;
     margin-bottom: 0px; */
     text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 

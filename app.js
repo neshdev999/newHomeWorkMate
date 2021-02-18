@@ -56,7 +56,7 @@ function headerContentTemplate() {
         </div>
         <div class="mainHeaderContainer">
             <div class="topHeaderContentContainer">
-            <h1>New Home Workmate</h1>            
+            <h1 class="topHeaderFirstContent">New Home Workmate</h1>            
             <h2 class="topHeaderSecondContent">Discover a nearby home upgrade/repair specialist for your home improvements</h2>
             </div>
         <div>
@@ -477,7 +477,7 @@ function detailedBusinessInfoPageHeaderContentTemplate() {
             </div>
         </div>
         <div class="headerContainer">
-            <div class="headerItem">Business : ${currentDetailedBusinessInfoPageHeader}</div>
+            <div class="headerItem">${currentDetailedBusinessInfoPageHeader}</div>
         </div>
     </div>`;
 }
