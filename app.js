@@ -126,11 +126,6 @@ function serviceMenuHeaderContentTemplate() {
             <h2>Services<h2>
         <div>
     </div>`;
-
-    // <div class="commonMenuItem"><img src="./images/icons/menu/modified/businessListIcon.gif"></div>
-    // <div class="commonMenuItem"><img src="./images/icons/menu/modified/detailedBusinessInfoIcon.gif"></div>
-    // <div class="commonMenuItem"><img src="./images/icons/menu/modified/servicesIcon.gif"></div>
-    //<button class="commonMenuContainerButton"><img src="./images/icons/menu/menu.png"></button>
 }
 
 function generateServiceMenuPageMainContent() {
@@ -364,7 +359,9 @@ function businessesListPageHeaderContentTemplate(imageTileID, store) {
             imageAltText = store.images[20].altText;
             break;
         default:
-            console.log('');
+            header = 'Handyman';
+            imageSrc = store.images[20].imageSource;
+            imageAltText = store.images[20].altText;
     }
     return `
     <div class="businessesListStyleContainer">
@@ -533,9 +530,6 @@ function generateBusinessInfoPageContentTemplate(selectedBusinessInfoPageStore) 
     </div>
     </div>
     <div class="gaper"></div>`;
-
-    // <li>${passStateCode}</li>
-    // <li>${passPostalCode}</li>
 }
 
 function businessInfoPageNavigationInputControlBox() {
@@ -727,7 +721,6 @@ function findMapQuestBusinessCategory(imageID) {
             break;
         default:
             mapQuestBusinessCategory = '078204';
-            console.log('');
     }
 
     return mapQuestBusinessCategory;

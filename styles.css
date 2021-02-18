@@ -7,12 +7,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
-
-/* @font-face {
-    font-family: 'Helvetica Neue';
-    src: url('./fonts/Helvetica_Neu_Bold.ttf');
-} */
-
 @font-face {
     font-family: 'Helvetica Neue Medium';
     src: url('./fonts/HelveticaNeue\ Medium.ttf');
@@ -20,7 +14,7 @@
 
 @font-face {
     font-family: 'frutiger';
-    src: url('./fonts/Frutiger\ LT\ Std\ 45\ Light\ Bold.otf');
+    src: url('./fonts/Frutiger.otf');
 }
 
 @font-face {
@@ -94,16 +88,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* margin: 2%; */
-    background-color: #137DBD;
     background-color: #3C92BB;
-    /* padding: 100px; */
-    /* margin-left: 1%;
-    margin-right: 1%; */
-    /* padding-bottom: 10px; */
     color: azure;
-    /* color: #3C53BB;
-    color: #BB653C; */
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     background-image: url('./images/apptools/tools.png');
@@ -114,8 +100,6 @@ body {
 
 .mainHeaderContainer {
     text-align: center;
-    /* background-color: #FA2941;
-    background-color: rgba(250, 41, 65, 0.8); */
     background-color: black;
     color: white;
     font-family: 'Truculenta', sans-serif;
@@ -126,8 +110,6 @@ body {
 }
 
 .topHeaderSecondContent {
-    /* font-family: 'Benne', serif;
-    font-family: Helvetica Neue Medium, sans-serif, serif; */
     font-family: 'frutiger', sans-serif, serif;
     margin-left: 2%;
     margin-right: 2%;
@@ -137,10 +119,6 @@ body {
 
 .topHeaderContentContainer {
     background-color: rgba(0, 0, 0, 0.8);
-    /* margin-left: 20px;
-    margin-right: 20px;
-    padding-top: 40px;
-    padding-bottom: 40px; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -181,13 +159,10 @@ h2 {
         height: 120px;
     }
     .mainHomePageFormContainer {
-        /* padding: 80px; */
         padding-top: 80px;
         padding-bottom: 80px;
         background-repeat: no-repeat;
         background-position: center;
-        /* border: 10px solid black;
-        border-image: url('./images/apptools/app_border-removebg-preview\(1\).png')  stretch; */
     }
     .randomBorderGenSector {
         background-image: url('./images/apptools/app_border-black.png');
@@ -258,8 +233,6 @@ h2 {
 
 .inputControlFormContainer {
     text-align: center;
-    /* margin: 1%;
-    padding: 1%; */
     margin: 10px;
     padding: 10px;
 }
@@ -320,17 +293,12 @@ h2 {
 .commonMenuNavigationContainer {
     position: fixed;
     top: 0;
-    /* z-index: 99; */
     z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /* margin: 0px; */
     margin: 2%;
-    /* background-color: rgba(0, 0, 0, 0.2); */
-    /* background-color: rgb(227, 245, 252); */
-    /* overflow: auto; */
 }
 
 .commonMenuNavigationItems {
@@ -365,18 +333,13 @@ h2 {
 }
 
 .commonMenuHeaderIcon:hover {
-    /* background-color: dimgray; */
     background-color: rgba(0, 0, 0, 0.1);
-    /* padding: 1%;
-    margin: 2%; */
     border: 2px solid darkmagenta;
     border: 2px solid rgb(72, 116, 206);
     border-radius: 2px;
 }
 
 .commonMenuContainerButton {
-    /* background-color: aliceblue;
-    background-color: rgba(240, 248, 255, 0.9); */
     cursor: pointer;
     border: none;
     color: white;
@@ -386,33 +349,22 @@ h2 {
 }
 
 .serviceHomeIconContainer {
-    /* background-color: #cac9f7;
-    background-color: rgba(202, 201, 247, 0.9); */
     background-color: rgba(146, 200, 232, 0.5);
     margin: 0px;
     padding: 0px;
 }
 
 .serviceServicesMenuIconContainer {
-    background-color: #cac9f7;
-    background-color: rgba(202, 201, 247, 0.9);
     background-color: rgba(146, 200, 232, 0.5);
     margin: 2%;
     padding: 2%;
 }
 
 #serviceMenuPageHeader {
-    /* margin: 5%; */
     margin-left: 35%;
     margin-right: 35%;
     text-align: center;
-    background-color: lightblue;
-    background-color: rgba(255, 154, 8, 0.5);
-    background-color: rgba(251, 145, 119, 0.3);
-    background-color: #fa3455;
     background-color: #ee4b66;
-    /* background-color: rgba(236,73,104,0.8); */
-    color: #264197;
     color: #f5f5f7;
     padding-top: 2px;
     padding-bottom: 2px;
@@ -443,19 +395,9 @@ h2 {
 }
 
 .singleImageTileNameContainer {
-    /* flex: 0 0 50px; */
     flex: 1;
     margin: 10px;
 }
-
-
-/* .singleImageTileNameContainer>.imageContainer {
-    margin: 10px;
-}
-
-.singleImageTileNameContainer>.imageContainer>img {
-    width: 100%;
-} */
 
 .serviceMenuTileImage {
     width: 400px;
@@ -480,7 +422,6 @@ h2 {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
     color: blue;
-    /* margin: 1%; */
 }
 
 #serviceMenuPageNavigationForm {
@@ -496,13 +437,6 @@ h2 {
     cursor: pointer;
     color: darkorchid;
 }
-
-
-/* .serviceMenuPageButton:hover {
-    background-color: #50e755;
-    color: white;
-    font-weight: bold;
-} */
 
 #serviceMenuNavigationSubmitButton {
     background: url('./images/icons/menu/modified/homeIcon.gif');
@@ -558,20 +492,14 @@ h2 {
     .commonMenuNavigationContainer {
         position: fixed;
         top: 0;
-        /* z-index: 99; */
         z-index: 1000;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         margin: 2%;
-        /* margin: 0px; */
-        /* background-color: rgb(227, 245, 252); */
-        /* overflow: auto; */
     }
     .serviceHomeIconContainer {
-        /* background-color: #cac9f7;
-        background-color: rgba(202, 201, 247, 0.9); */
         background-color: rgba(146, 200, 232, 0.5);
         margin: 2%;
         padding: 2%;
@@ -587,12 +515,7 @@ h2 {
         margin-bottom: 2%;
     }
     .commonMenuHeaderIcon {
-        /* margin: 2%; */
         margin: 20px;
-        /* position: sticky;
-        position: -webkit-sticky;
-        top: 0;
-        align-self: flex-start; */
     }
     .imagteTileParentWrapper {
         text-align: center;
@@ -627,13 +550,8 @@ h2 {
 }
 
 .businessesListStyleContainer {
-    background-color: rgba(0, 0, 0, 0.2);
-    background-color: rgba(255, 232, 207);
-    background-color: rgba(121, 166, 212, 0.3);
     background-color: rgba(79, 102, 116, 0.9);
-    /* background-color: rgba(251, 145, 119, 0.3); */
     padding: 30px;
-    /* margin-bottom: 5px; */
     padding-bottom: 60px;
 }
 
@@ -654,7 +572,6 @@ h2 {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    /* margin: 2%; */
     background-color: #fafafb;
 }
 
@@ -673,29 +590,13 @@ h2 {
     align-items: center;
 }
 
-
-/* #businessListNavigationFormReturnServicesMenu {
-    width: 80px;
-} */
-
 .businessListNavigationButton {
-    /* background-color: #caeccb; */
     border: none;
-    /* padding: 16px 32px; */
     padding: 14px 40px;
     text-decoration: none;
     margin: 4px 2px;
     cursor: pointer;
-    /* color: darkorchid; */
 }
-
-
-/* .businessListNavigationButton:hover {
-    background-color: #50e755;
-    background-color: red;
-    color: white;
-    font-weight: bold;
-} */
 
 #businessesListNavigationServSubmitButton {
     background: url('./images/icons/menu/modified/servicesIcon.gif');
@@ -731,7 +632,6 @@ h2 {
 
 .businessesListHeader {
     text-align: center;
-    /* background-color: rgba(251, 145, 119, 0.3); */
     color: #f5f5f7;
     font-family: 'Roboto Mono', monospace;
 }
@@ -780,7 +680,6 @@ h2 {
     border: 0;
     outline: 0;
     padding: 1.5rem 2rem;
-    /* font-size: 4rem; */
     font-size: 20px;
     font-family: monospace;
     font-family: 'Source Sans Pro', sans-serif;
@@ -789,9 +688,6 @@ h2 {
     cursor: pointer;
     border-radius: 5px;
     border-bottom: 4px solid #d9d9d9;
-    color: #d51e1e;
-    color: #fd7d4a;
-    color: #94bdce;
     color: #88bacf;
     font-weight: bold;
 }
@@ -806,36 +702,20 @@ h2 {
 }
 
 #businessHeadingNameContainer {
-    /* padding: 1.5rem 2rem; */
-    /* background-color: darkcyan; */
-    background-color: #fff;
-    background-color: thistle;
-    background-color: rgba(78, 60, 182, 0.2);
+    background-color: #647986d8;
     border: 0;
     outline: 0;
-    /* font-size: 4rem; */
     font-size: 24px;
-    /* font-family: monospace; */
     font-family: "Montserrat", sans-serif;
     box-shadow: 0px 5px 10px #0057ab;
-    /* transition: all 0.3s;
-    cursor: pointer; */
     border-radius: 5px;
     border-bottom: 4px solid #d9d9d9;
-    color: #d51e1e;
-    color: #fd7d4a;
-    /* color: #94bdce;
-    color: #88bacf; */
     color: white;
     font-weight: bold;
 }
 
 #businessHeadingDistanceContainer {
-    /* padding: 1.5rem 2rem; */
-    /* background-color: darkcyan;  */
-    background-color: #79e3b6;
-    background-color: rgba(78, 60, 182, 0.2);
-    /* background-color: rgba(239, 162, 125); */
+    background-color: #647986d8;
     border-radius: 2px;
     border: 2px solid black;
     border-radius: 0.5px;
@@ -843,7 +723,6 @@ h2 {
     color: #985b6a;
     color: #9c4f62;
     color: white;
-    /* color: #444153; */
     font-weight: bold;
     font-size: 28px;
 }
@@ -860,15 +739,11 @@ h2 {
 }
 
 .businessDistanceContainer {
-    background-color: #79e3b6;
-    background-color: rgba(78, 60, 182, 0.2);
     background-color: rgba(239, 162, 125);
     border-radius: 2px;
     border: 2px solid black;
     border-radius: 0.5px;
     border: 2px solid azure;
-    color: #985b6a;
-    color: #9c4f62;
     color: #444153;
     font-weight: bold;
     font-size: 18px;
@@ -910,14 +785,6 @@ h2 {
     .businessItemContainer>#businessHeadingNameContainer {
         flex: 5;
     }
-    /* #businessHeadingNameContainer {
-        padding: 1.5rem 2rem;
-        background-color: darkcyan;
-    } */
-    /* #businessHeadingDistanceContainer {
-        padding: 1.5rem 2rem;
-        background-color: darkcyan;
-    } */
     #businessHeadingNameContainer {
         font-size: 28px;
     }
@@ -945,7 +812,6 @@ h2 {
     align-items: center;
     justify-content: center;
     background-color: #fafafb;
-    /* margin: 2%; */
 }
 
 .businessInfoPageNavigationFormItem {
@@ -957,8 +823,6 @@ h2 {
 .businessInfoPageNavigationButton {
     background-color: #caeccb;
     border: none;
-    /* margin: 1%;
-    padding: 20px; */
     margin: 4px 2px;
     padding: 16px 32px;
     padding: 14px 40px;
@@ -966,13 +830,6 @@ h2 {
     cursor: pointer;
     color: darkorchid;
 }
-
-
-/* .businessInfoPageNavigationButton:hover {
-    background-color: #50e755;
-    color: white;
-    font-weight: bold;
-} */
 
 #detailedBusinessInfoNavigationBussSubmitButton {
     background: url('./images/icons/menu/modified/detailedBusinessInfoIcon.gif');
@@ -989,12 +846,6 @@ h2 {
     background-color: rgb(102, 195, 226);
     box-shadow: 1px 1px darkblue;
 }
-
-
-/* #businessInfoPageNavigationFormReturnListsMenu {
-    margin: 2%;
-    padding: 50px;
-} */
 
 #detailedBusinessInfoNavigationHomeSubmitButton {
     background: url('./images/icons/menu/modified/homeIcon.gif');
@@ -1017,11 +868,9 @@ h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* margin: 2%; */
     padding: 30px;
     margin-left: 10%;
     margin-right: 10%;
-    /* background-color: lightblue; */
     background-color: #feded6;
     background-color: #fa3455;
     background-color: #ee4b66;
@@ -1037,7 +886,6 @@ h2 {
 }
 
 .detailedInfoAddressStyles {
-    background-color: royalblue;
     background-color: #eaeaea;
 }
 
@@ -1048,31 +896,23 @@ h2 {
     justify-content: center;
     background-color: cornsilk;
     background-color: #eaeaea;
-    /* margin-left: 2%; */
-    /* margin: 2%; */
     margin-left: 10%;
     margin-right: 10%;
 }
 
 .addressUlListContainer {
-    /* text-align: left; */
     flex: 1;
-    /* padding-right: 10px;
-    padding-left: 10px; */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
-    /* color: #fff0e7; */
     background-color: #fff0e7;
     border: 0.5px solid whitesmoke;
     border-radius: 3px;
-    color: #fc3526;
-    color: #949497;
+    color: #444153;
     font-weight: bold;
 }
 
 .addressUlListContainer li {
-    /* padding: 10px; */
     padding: 5px;
     padding-right: 20px;
     padding-left: 20px;
@@ -1082,52 +922,33 @@ h2 {
     margin: 0;
     padding: 0;
     list-style-type: none;
-    /* font-size: 16px; */
 }
 
 .addressHeader {
     flex: 1;
-    /* margin-left: 2%;
-    margin-right: 2%; */
     text-align: center;
-    /* background-color: burlywood; */
     font-family: 'Roboto', sans-serif;
     font-size: 22px;
-    /* padding: 1%; */
     padding: 20px;
     padding-left: 3%;
     padding-right: 3%;
     border-radius: 2px;
-    color: #444153;
     color: #f8625d;
 }
 
 .mapStylesContainer {
-    background-color: rosybrown;
-    background-color: #eaeaea;
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-
-/* .mapsContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-
 .mapItems {
-    /* margin: 2%; */
-    /* padding: 1%; */
     margin: 10px;
     padding: 10px;
 }
 
 .mapContainer {
     text-align: center;
-    /* margin: 2%; */
     margin-left: 2%;
     margin-right: 2%;
-    /* padding: 1%; */
 }
 
 .morInfoContainer {
@@ -1135,10 +956,8 @@ h2 {
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    /* margin: 2%; */
     margin-left: 10%;
     margin-right: 10%;
-    background-color: lightsalmon;
     background-color: #eaeaea;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 20px;
@@ -1240,7 +1059,6 @@ h2 {
     }
     .mapContainer {
         text-align: center;
-        /* margin: 2%; */
         margin-left: 10%;
         margin-right: 10%;
         padding: 1%;
@@ -1287,51 +1105,8 @@ h2 {
 /* Footer */
 
 .footerContainer {
-    background-color: black;
-    background-color: #F5F5F7;
     background-color: rgba(245, 245, 247, 0.5);
-    color: white;
     color: black;
-    /* padding: 5px; */
-    /* padding-bottom: 0px;
-    margin-bottom: 0px; */
     text-align: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-
-
-/* footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 10px;
-} */
-
-
-/* footer {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 1rem;
-    background-color: #efefef;
-    text-align: center;
-} */
-
-
-/* footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-
-    background: #6cf;
-} */
-
-
-/* footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-} */
