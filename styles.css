@@ -13,11 +13,6 @@
 }
 
 @font-face {
-    font-family: 'frutiger';
-    src: url('./fonts/Frutiger.otf');
-}
-
-@font-face {
     font-family: 'helveticaneuebold';
     src: url('./fonts/helvetica_neu_bold-webfont.woff2') format('woff2'), url('./fonts/helvetica_neu_bold-webfont.woff') format('woff');
     font-weight: normal;
@@ -110,7 +105,7 @@ body {
 }
 
 .topHeaderSecondContent {
-    font-family: 'frutiger', sans-serif, serif;
+    font-family: 'Roboto', sans-serif;
     margin-left: 2%;
     margin-right: 2%;
     word-wrap: break-word;
