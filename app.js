@@ -123,8 +123,8 @@ function serviceMenuHeaderContentTemplate() {
             </div>
         </div>
         <div id="serviceMenuPageHeader">
-            <h2>Services<h2>
-        <div>
+            <h2>Services</h2>                                                                                                         
+        </div>
     </div>`;
 }
 
