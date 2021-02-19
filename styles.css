@@ -377,12 +377,8 @@ h2 {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    /* margin-left: 1%;
-    margin-right: 1%; */
     justify-content: space-between;
     background-color: rgba(49, 49, 49, 0.1);
-    /* padding-left: 5%;
-    padding-right: 5%; */
 }
 
 .singleImageTileNameContainer {
@@ -462,8 +458,6 @@ h2 {
 
 @media screen and (min-width: 992px) {
     #serviceMenuPageHeader {
-        /* margin-left: 20%;
-        margin-right: 20%; */
         margin-left: 5%;
         margin-right: 5%;
         margin-top: 0px;
@@ -520,8 +514,6 @@ h2 {
     }
     .imagteTileParentWrapper {
         text-align: center;
-        /* margin-left: 0px;
-        margin-right: 0px; */
         margin-top: 10px;
         margin-bottom: 10px;
     }
@@ -547,7 +539,6 @@ h2 {
 
 .gaper {
     padding: 5px;
-    /* background-color: saddlebrown; */
 }
 
 .businessesListStyleContainer {
@@ -703,28 +694,18 @@ h2 {
 }
 
 #businessHeadingNameContainer {
-    /* background-color: #647986d8; */
     border: 0;
     outline: 0;
     font-size: 24px;
     font-family: "Montserrat", sans-serif;
-    /* box-shadow: 0px 5px 10px #0057ab; */
     border-radius: 5px;
-    /* border-bottom: 4px solid #d9d9d9; */
     color: white;
     font-weight: bold;
     color: #647986d8;
 }
 
 #businessHeadingDistanceContainer {
-    /* background-color: #647986d8; */
-    /* border-radius: 2px; */
-    /* border: 2px solid black; */
-    /* border-radius: 0.5px; */
-    /* border: 2px solid azure; */
-    color: #985b6a;
     color: #9c4f62;
-    /* color: white; */
     font-weight: bold;
     font-size: 24px;
     font-family: "Montserrat", sans-serif;
