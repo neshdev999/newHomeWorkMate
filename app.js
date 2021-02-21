@@ -142,98 +142,6 @@ function serviceMenuMainContentTemplate() {
     return [serviceTileImagesTemplate, formNavigationControl];
 }
 
-// function generateServiceTileImagesTemplate() {
-//     return `
-//     <div class="imagteTileParentWrapper">
-//         <div class="imageTilesWrapper">
-//             <div class="singleImageTileNameContainer">
-//                 <div class="imageContainer"><img src="./images/image-tiles/security_systems.jpg" class="serviceMenuTileImage" id="securitySystemsTile" alt="man clicking on security keypad" tabindex="3" aria-pressed="false"></div>
-//                 <div class="imageTileNameContainer">Security Systems</div>
-//             </div>
-//             <div class="singleImageTileNameContainer">
-//                 <div class="imageContainer"><img src="./images/image-tiles/pest-control.jpg" class="serviceMenuTileImage" id="pestControlTile" tabindex="4" aria-pressed="false" alt="man sprinkling pest control"></div>
-//                 <div class="imageTileNameContainer">Pest Control</div>
-//             </div>
-//             <div class="singleImageTileNameContainer">
-//                 <div class="imageContainer"><img src="./images/image-tiles/landscaping.jpg" class="serviceMenuTileImage" id="landscapingTile" tabindex="5" aria-pressed="false" alt="men laying out grass"></div>
-//                 <div class="imageTileNameContainer">Landscaping</div>
-//             </div>
-//             <div class="singleImageTileNameContainer">
-//                 <div class="imageContainer"><img src="./images/image-tiles/cleaningServices.jpg" class="serviceMenuTileImage"  id="cleaningServicesTile" tabindex="6" aria-pressed="false" alt="woman cleaning water hose"></div>
-//                 <div class="imageTileNameContainer">Cleaning Services</div>
-//             </div>
-//             <div class="singleImageTileNameContainer">
-//                 <div class="imageContainer"><img src="./images/image-tiles/HVAC.jpg" class="serviceMenuTileImage" id="hvacTile" aria-pressed="false" tabindex="7" alt="hvac technician doing routine checkup"></div>
-//                 <div class="imageTileNameContainer">HVAC</div>
-//             </div>
-//             <div class="singleImageTileNameContainer">
-//                 <div class="imageContainer"><img src="./images/image-tiles/roofing.jpg" class="serviceMenuTileImage" id="roofingServicesTile" aria-pressed="false" tabindex="8" alt="man arranging roof panels"></div>
-//                 <div class="imageTileNameContainer">Roofing Services</div>
-//             </div>
-//             <div class="singleImageTileNameContainer">
-//                 <div class="imageContainer"><img src="./images/image-tiles/plumbing.jpg" class="serviceMenuTileImage" id="plumbingTile" aria-pressed="false" tabindex="9" alt="man fixing plumbing line under sink"></div>
-//                 <div class="imageTileNameContainer">Plumbing</div>
-//             </div>
-//             <div class="singleImageTileNameContainer">
-//                 <div class="imageContainer"><img src="./images/image-tiles/electrical.jpg" class="serviceMenuTileImage" id="electricalServicesTile" aria-pressed="false" tabindex="10" alt="electricians fixing lights"></div>
-//                 <div class="imageTileNameContainer">Electrical Services</div>
-//             </div>
-//             <div class="singleImageTileNameContainer">
-//                 <div class="imageContainer"><img src="./images/image-tiles/windowInstallation.jpg" class="serviceMenuTileImage" id="windowInstallationTile" aria-pressed="false" tabindex="11" alt="man doing window installation"></div>
-//                 <div class="imageTileNameContainer">Window Installation</div>
-//             </div>
-//             <div class="singleImageTileNameContainer">
-//                 <div class="imageContainer"><img src="./images/image-tiles/fencing_installation.jpg" class="serviceMenuTileImage" id="fencingServicesTile" aria-pressed="false" tabindex="12" alt="two men installing fences"></div>
-//                 <div class="imageTileNameContainer">Fencing Services</div>
-//             </div>
-//             <div class="singleImageTileNameContainer">
-//                 <div class="imageContainer"><img src="./images/image-tiles/garage-services.jpg" class="serviceMenuTileImage" id="garageServicesTile" aria-pressed="false" tabindex="13" alt="two men repairing garage door"></div>
-//                 <div class="imageTileNameContainer">Garage Services</div>
-//             </div>
-//             <div class="singleImageTileNameContainer">
-//                 <div class="imageContainer"><img src="./images/image-tiles/Siding.jpg" class="serviceMenuTileImage" id="sidingServicesTile" aria-pressed="false" tabindex="14" alt="man installing siding around house"></div>
-//                 <div class="imageTileNameContainer">Siding Services</div>
-//             </div>
-//             <div class="singleImageTileNameContainer">
-//                 <div class="imageContainer"><img src="./images/image-tiles/solar-panel-installation.jpg" class="serviceMenuTileImage" id="solarPanelTile" aria-pressed="false" tabindex="15" alt="man installing solar panel"></div>
-//                 <div class="imageTileNameContainer">Solar Panel Installation</div>
-//             </div>
-//             <div class="singleImageTileNameContainer">
-//                 <div class="imageContainer"><img src="./images/image-tiles/carpet_cleaning.jpg" class="serviceMenuTileImage" id="carpetCleaningTile" aria-pressed="false" tabindex="16" alt="two men carpet cleaning"></div>
-//                 <div class="imageTileNameContainer">Carpet Cleaning</div>
-//             </div>
-//             <div class="singleImageTileNameContainer">
-//                 <div class="imageContainer"><img src="./images/image-tiles/shades_blinds.jpg" class="serviceMenuTileImage" id="shadesAndBlindsTile" aria-pressed="false" tabindex="17" alt="man installing shade"></div>
-//                 <div class="imageTileNameContainer">Shades & Blinds</div>
-//             </div>
-//             <div class="singleImageTileNameContainer">
-//                 <div class="imageContainer"><img src="./images/image-tiles/carpet-installation.jpg" class="serviceMenuTileImage" id="carpetInstallationTile" aria-pressed="false" tabindex="18" alt="man installing carpet"></div>
-//                 <div class="imageTileNameContainer">Carpet Installation</div>
-//             </div>
-//             <div class="singleImageTileNameContainer">
-//                 <div class="imageContainer"><img src="./images/image-tiles/painting_services.jpg" class="serviceMenuTileImage" id="paintingServicesTile" aria-pressed="false" tabindex="19" alt="man painting wall with yellow paint"></div>
-//                 <div class="imageTileNameContainer">Painting Services</div>
-//             </div>
-//             <div class="singleImageTileNameContainer">
-//                 <div class="imageContainer"><img src="./images/image-tiles/fireplace_services.jpg" class="serviceMenuTileImage" id="fireplaceServicesTile" aria-pressed="false" tabindex="20" alt="man repairing fireplace"></div>
-//                 <div class="imageTileNameContainer">Fireplace Services</div>
-//             </div>
-//             <div class="singleImageTileNameContainer">
-//                 <div class="imageContainer"><img src="./images/image-tiles/duct-cleaning.jpg" class="serviceMenuTileImage" id="airDuctServicesTile" aria-pressed="false" tabindex="21" alt="man cleaning air duct"></div>
-//                 <div class="imageTileNameContainer">Air Duct Services</div>
-//             </div>
-//             <div class="singleImageTileNameContainer">
-//                 <div class="imageContainer"><img src="./images/image-tiles/pool-services.jpg" class="serviceMenuTileImage" id="poolServicesTile" aria-pressed="false" tabindex="22" alt="man cleaning pool"></div>
-//                 <div class="imageTileNameContainer">Pool Services</div>
-//             </div>
-//             <div class="singleImageTileNameContainer">
-//                 <div class="imageContainer"><img src="./images/image-tiles/handyman_services.jpg" class="serviceMenuTileImage" id="handymanServicesTile" aria-pressed="false" tabindex="23" alt="handyman with all different types of tools"></div>
-//             <div class="imageTileNameContainer">Handyman</div>
-//         </div>
-//         </div>
-//     </div>`;
-// }
-
 function generateServiceTileImagesTemplate() {
     return `<div class="imagteTileParentWrapper">
                 <div class="imageTilesWrapper" id="tilesWrapperAttach">
@@ -522,11 +430,11 @@ function detailedBusinessInfoPageMainContentTemplate(selectedBusinessInfoPageSto
 }
 
 function generateBusinessInfoPageContentTemplate(selectedBusinessInfoPageStore) {
-    let passLat, passLng, holderId, passSlug, srcAddress, srcDetailsAddress, passStreet, passCity, passStateCode, passPostalCode, passCountryCode;
+    let passLat, passLng, passSlug, srcAddress, srcDetailsAddress, passStreet, passCity, passStateCode, passPostalCode, passCountryCode;
     if (selectedBusinessInfoPageStore.names.length !== 0) {
         for (let i = 0; i <= selectedBusinessInfoPageStore.names.length; i++) {
             if (selectedBusinessInfoPageStore.names[i] === currentDetailedBusinessInfoPageHeader) {
-                holderId = i;
+
                 passLat = selectedBusinessInfoPageStore.relatedCoordiates[i][1];
                 passLng = selectedBusinessInfoPageStore.relatedCoordiates[i][0];
                 passSlug = selectedBusinessInfoPageStore.slugs[i];
