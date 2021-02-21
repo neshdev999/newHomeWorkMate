@@ -11,23 +11,14 @@ let lat = 35.121676;
 let lng = -81.007845;
 /* Business coordiates */
 let businessesCoordiatesArray = [];
-let receivedDistance = 0;
 let globalArray = [];
 let currentDetailedBusinessInfoPageHeader = "Business Name";
-let defaultBusinessInfoPageStore = {
-    pages: [{
-        currentPageSlug: '/us/south-carolina/total-security-356139046',
-        currentPageCoordinates: [-80.935592, 34.903086]
-    }]
-};
-
 let selectedBusinessInfoPageStore = {
     names: [],
     relatedCoordiates: [],
     slugs: [],
     properties: []
 };
-
 let zipCodeErrorStatus = false;
 let appSpSecret = config.secKey;
 
@@ -646,11 +637,9 @@ function findMapQuestBusinessCategory(imageID) {
             mapQuestBusinessCategory = '172101';
             break;
         case 'fireplaceServicesTile':
-            // mapQuestBusinessCategory = '179939';
             mapQuestBusinessCategory = '762902';
             break;
         case 'airDuctServicesTile':
-            // mapQuestBusinessCategory = '73490202';
             mapQuestBusinessCategory = '171102';
             break;
         case 'poolServicesTile':
@@ -662,9 +651,7 @@ function findMapQuestBusinessCategory(imageID) {
         default:
             mapQuestBusinessCategory = '078204';
     }
-
     return mapQuestBusinessCategory;
-
 }
 
 /* Convert meters to miles */
@@ -738,11 +725,9 @@ async function getBusinessesListFromMapQuestApi(lat, lng, cat) {
 
 function createCurrentBusinessLocationLatLng(responseJson) {
     let businessesCoordiatesCurrentArray = [];
-
     for (let i = 0; i < responseJson.results.length; i++) {
         businessesCoordiatesCurrentArray.push(responseJson.results[i].place.geometry.coordinates);
     }
-
     businessesCoordiatesArray = JSON.parse(JSON.stringify(businessesCoordiatesCurrentArray));
 }
 
@@ -766,9 +751,7 @@ async function mapQuestDelay(lat, lng, businessLocationLat, businessLocationLng)
             })
         .catch(err => {
             $('#distanceErrorContainer').text(`Server has responded with error 😪  : ${err.message} 😫`);
-            // $('#serverErrorReportContainer').css('display', 'block');
             $('#distanceErrorContainer').css('display', 'block');
-
             return 0;
         });
 }
@@ -803,7 +786,6 @@ function gatherInfoForDetailedBusinessInfoPage(responseJson) {
         selectedBusinessInfoPageStore.properties.push(responseJson.results[i].place.properties);
     }
 }
-
 
 function footerContent() {
     $('#copyRightYear').text(getCopyRightCurrentYear());
@@ -886,7 +868,6 @@ function handleImageTileClick() {
             }
         }
     });
-
 
     $('img.serviceMenuTileImage').on('click', function() {
         let receivedImageID = $(this).attr('id');
@@ -1025,7 +1006,6 @@ function provideRoute(checkFlag) {
         handleHomePageFormSubmission();
         footerGen();
     } else if (checkFlag === 'servicesMenuPage') {
-        /* Clear Home Page banner interval  */
         clearInterval(intervalCycleHolder);
         serviceMenuPage();
         handleServiceMenuPageNavigationFormSubmission();
@@ -1033,7 +1013,6 @@ function provideRoute(checkFlag) {
         handleImageTileClick();
         footerGen();
     } else if (checkFlag === 'businessesListPage') {
-        /* Clear Home Page banner interval  */
         clearInterval(intervalCycleHolder);
         businessesListPage(receivedImageTileID, businessesListStore);
         handleBusinessesListPageNavigationFormSubmission();
@@ -1041,7 +1020,6 @@ function provideRoute(checkFlag) {
         handleDetailedBusinessInfoPageBNameClick();
         footerGen();
     } else if (checkFlag === 'detailedSingleBusinessInfoPage') {
-        /* Clear Home Page banner interval  */
         clearInterval(intervalCycleHolder);
         detailedBusinessInfoPage();
         handleBusinessInfoPageNavigationFormSubmission();
