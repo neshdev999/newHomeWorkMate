@@ -29,7 +29,7 @@ https://neshdev999.github.io/newHomeWorkMate/.
 # Screenshots
 Landing Page/Home Page:
 
-![Home Page](./screenshots/homepage.png)
+![Home Page](./screenshots/home.png)
 
 Services Page:
 
