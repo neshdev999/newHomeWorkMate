@@ -1,5 +1,5 @@
 /* Global variables */
-
+/* Home Page Image and postal code */
 let imageChangeCounter = 0;
 let receivedImageTileID = '';
 let postCode = 28278;
@@ -19,7 +19,9 @@ let selectedBusinessInfoPageStore = {
     slugs: [],
     properties: []
 };
+/* Store Zipcode Error Status */ 
 let zipCodeErrorStatus = false;
+/* Setup API Configuration */
 let appSpSecret = config.secKey;
 
 
@@ -425,7 +427,6 @@ function generateBusinessInfoPageContentTemplate(selectedBusinessInfoPageStore) 
     if (selectedBusinessInfoPageStore.names.length !== 0) {
         for (let i = 0; i <= selectedBusinessInfoPageStore.names.length; i++) {
             if (selectedBusinessInfoPageStore.names[i] === currentDetailedBusinessInfoPageHeader) {
-
                 passLat = selectedBusinessInfoPageStore.relatedCoordiates[i][1];
                 passLng = selectedBusinessInfoPageStore.relatedCoordiates[i][0];
                 passSlug = selectedBusinessInfoPageStore.slugs[i];

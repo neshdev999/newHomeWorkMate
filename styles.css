@@ -142,6 +142,13 @@ h2 {
     padding: 60px;
 }
 
+.mainHomePageFormContainer {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 
 /* Desktop Screen */
 
@@ -149,25 +156,13 @@ h2 {
     .mainHeaderImageIconItem {
         margin-top: 40px;
     }
-    .mainHeaderImageIconItem>img {
+    /* .mainHeaderImageIconItem>img {
         width: 100%;
         height: 120px;
-    }
+    } */
     .mainHomePageFormContainer {
         padding-top: 80px;
         padding-bottom: 80px;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
-    .randomBorderGenSector {
-        background-image: url('./images/apptools/app_border-black.png');
-        background-repeat: repeat;
-        padding: 60px;
-    }
-    .randomBorderGenSecondSector {
-        background-image: url('./images/apptools/app_border-second-black.png');
-        background-repeat: repeat;
-        padding: 60px;
     }
     h1 {
         font-size: 40px;
@@ -254,15 +249,17 @@ h2 {
     margin-right: 2%;
 }
 
+.inputControlFormContainer {
+    margin: 5px;
+    padding: 5px;
+}
+
 
 /* Desktop Screen */
 
 @media screen and (min-width: 992px) {
     #sliderParentContainer {
         padding: 20px;
-    }
-    #sliderContainer {
-        width: 900px;
     }
     #homePageForm input {
         margin: 10px;
@@ -458,8 +455,6 @@ h2 {
 
 @media screen and (min-width: 992px) {
     #serviceMenuPageHeader {
-        margin-left: 5%;
-        margin-right: 5%;
         margin-top: 0px;
         padding-top: 5px;
         padding-bottom: 5px;
@@ -520,6 +515,10 @@ h2 {
     .serviceMenuPageNavigationFormContainer {
         margin: 0px;
     }
+}
+
+.imageContainer>img:focus-visible {
+    outline: 1px solid #4b75cc;
 }
 
 
@@ -716,10 +715,8 @@ h2 {
     transform: scale(0.98);
 }
 
-.businessNameContainer:focus {
-    background-color: rgba(23, 23, 223, 0.4);
-    outline: 2px solid #79e3b6;
-    color: white;
+.businessNameContainer:focus-visible {
+    outline: 1px solid #4b75cc;
 }
 
 .businessDistanceContainer {
@@ -1002,7 +999,10 @@ h2 {
     box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
     background-color: black;
     color: white;
-    outline: 2px solid tomato;
+}
+
+.moreDetailsStyled:focus-visible {
+    outline: 1px solid #4b75cc;
 }
 
 #serverErrorReportContainer {
