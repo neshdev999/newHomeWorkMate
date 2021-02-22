@@ -847,6 +847,7 @@ function handleServiceMenuPageNavigationTriggerButtonClick() {
         if ($("#commonMenuItemsHolder").hasClass("hidden")) {
             $('#commonMenuItemsHolder').removeClass('hidden');
             $('.commonMenuNavigationContainer').css('background-color', 'rgba(31,162,229,0.1)');
+ 
         } else {
             $('#commonMenuItemsHolder').addClass('hidden');
             $('.commonMenuNavigationContainer').css('background-color', 'transparent');

@@ -322,18 +322,8 @@ h2 {
 
 .commonMenuHeaderIcon:hover {
     background-color: rgba(0, 0, 0, 0.1);
-    border: 2px solid darkmagenta;
-    border: 2px solid rgb(72, 116, 206);
+    /* border: 2px solid rgb(72, 116, 206); */
     border-radius: 2px;
-}
-
-.commonMenuContainerButton {
-    cursor: pointer;
-    border: none;
-    color: white;
-    text-align: center;
-    border: 1px solid blue;
-    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .serviceHomeIconContainer {
